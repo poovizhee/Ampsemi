@@ -1198,6 +1198,7 @@ def is_PMBus_connected():
         return "YES"
 
 def usb_replace_bit(reg_address=10, reg_size=10, high_index=10, low_index=0, reg_value='110', command_format="Block"):
+    # Read the register with address reg_address and replace the bits between high_index and low_index with reg_value and write the complete register back.
     if command_format == "Block":
         usb2gpio = usb_to_gpio.USB_TO_GPIO()
         value = usb2gpio.i2c_read(address=int(PMBUS_ADDR, 16), commandcode=reg_address, noofbytestoread=reg_size + 1)
@@ -1273,6 +1274,7 @@ def usb_replace_bit(reg_address=10, reg_size=10, high_index=10, low_index=0, reg
         usb2gpio.close()
 
 def read_bits(reg_address=10, reg_size=10, high_index=10, low_index=0, command_format = 'Block'):
+    # Read the completer payload of reg_address but return the content between high_index and low_index
     global parallel_thread
     if command_format == 'Block':
         value = parallel_thread.read_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16), pullup_enable=1,
@@ -1339,6 +1341,7 @@ def read_bits(reg_address=10, reg_size=10, high_index=10, low_index=0, command_f
 
 #MTP Burn verification
 def otp_test():
+    #Reports number of  MTP sections have been written
     global parallel_thread
     number_of_sections_written = 0
     #usb_replace_bit(reg_address=int(0xFD), reg_size=9, high_index=70, low_index=69, reg_value='01')
@@ -1387,6 +1390,7 @@ def otp_test():
 #     return number_of_sections_written
 
 def replace_bit(reg_address=10, reg_size=10, high_index=10, low_index=0, reg_value='110'):
+    # Read the register with address reg_address and replace the bits between high_index and low_index with reg_value and write the complete register back.
     global PMBUS_ADDR, parallel_thread
     log_gui_interaction("Inside replace_bit()")
     value = parallel_thread.read_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16), pullup_enable=1,
@@ -1528,8 +1532,9 @@ def decode_telemetry():
             break
     workbook2.save('telemetry_data.xlsx')
     return votf_received
-
+#Not used
 def MTP_burnt_verification():
+    #Not used
     global register_database, parallel_thread, PMBUS_ADDR, PAGE
     print("Verifying the mtp updation")
     log_gui_interaction("Inside MTP_burnt_verification()")
@@ -1687,6 +1692,7 @@ def MTP_burnt_verification():
 
 #Register database functions
 def write_PMBUS_entry_in_command_xlsx(register_key):
+    # write the data of the register_key from register_database to command.xlsx so that it gets executed by parallel_thread
     global register_database, next_row_pointer_command_xlsx, PMBus_freq, PMBus_parity, PAGE, stop_thread, parallel_thread
     log_gui_interaction("Inside write_PMBUS_entry_in_command_xlsx() and register key is: "+register_key)
 
@@ -1739,6 +1745,7 @@ def write_PMBUS_entry_in_command_xlsx(register_key):
     # parallel_thread.start()
 
 def update_entry_in_master_command_xlsx(register_key):
+    # write the data of the register_key from register_database to master_command.xlsx so that it gets executed by parallel_thread
     global register_database, next_row_pointer_command_xlsx, PMBus_freq, PMBus_parity, PAGE, stop_thread, parallel_thread
     log_gui_interaction("Inside update_entry_in_master_command_xlsx() and register key is: " + register_key)
     is_paged = 'No'
@@ -2075,6 +2082,7 @@ def create_new_master_command_xlsx():
 
 #Other
 def print_log(string_to_be_printed, info_type):
+    #This function will show the input string on the GUI console
     global homeWin_obj
     # Logger colors
     COLORS = {"DEBUG": 'blue', "INFO": 'black', "WARNING": 'orange', "ERROR": 'red'}
@@ -2125,6 +2133,7 @@ def write_feature_variable(register_key, high_index_pointer, low_index_pointer):
         return "INVALID"
 
 def resolution_calculation(temp_update):
+    # Decides the resolution for VR output
     # for SVID frame only temp_update should be 1 for all other cases temp_update should be 0
     global resolutionA, resolutionB, parallel_thread
     log_gui_interaction("Inside resolution_calculation()")
@@ -2204,8 +2213,9 @@ def resolution_calculation(temp_update):
                 resolutionB = '5'
     return
 
-# user input function on master command xlsx loading or not
+
 def master_command_xlsx_user_input():
+    # Should we load the previous interaction data or show we start from scratch. These decision are made here.
     global stop_thread, initial_device_status, mtp_load_obj
     log_gui_interaction("Inside master_command_xlsx_user_input()")
 
@@ -2239,6 +2249,7 @@ def master_command_xlsx_user_input():
             print("Copy the master_command_xlsx content to command.xlsx and run the parallel thread.")
             stop_thread = True
             time.sleep(1)
+
             update_command_xlsx_from_master_command_xlsx()  # call the parallel thread when all master_command xlsx has been copied.
             stop_thread = False
             parallel_thread.start()
@@ -3281,7 +3292,7 @@ class MyThread(QThread):
         # print(a.get_control(control_line_number=3))
 
         if VR_Enabled == "ON":  # Reads an instance from UI
-            a.set_control(control_line_number=3, control_on=True)         # Writes 1 to Enable pin
+            a.set_control(control_line_number=3, control_on=True)         # Writes 1 to Disable pin
             # pass
         else:
             a.set_control(control_line_number=3, control_on=False)        # Writes 0 to Enable pin
@@ -3350,7 +3361,7 @@ class MyThread(QThread):
         # readline = self.dio.ni845xDioReadLine(port, line)  # Reads the digital line
         # self.dio.ni845xClose()
         return readline
-
+    #not used
     def pmbus_alert(self, voltagelevel=33, port=0, type=1, line=0):
         l = list(format(0, "08b"))  # 8 bits format for DIO
         l[line] = str(1)
@@ -3412,7 +3423,7 @@ class MyThread(QThread):
 
             except Exception as error:
                 self.update_error(error)
-
+    #not used
     def close(self):
         """ Closes the device port and Protocol Configuration ports of NI8452
         """
@@ -3420,7 +3431,7 @@ class MyThread(QThread):
         if self.enable_i2c: self.i2c.ni845xI2cConfigurationClose()
         elif self.enable_spi: self.spi.ni845xSpiConfigurationClose()
         elif self.enable_dio: self.dio.ni845xDioConfigurationClose()
-        # """
+        """
         return
         # try:
         #     if self.enable_i2c:
@@ -3515,7 +3526,7 @@ class MyThread(QThread):
         # print(PMBUS_ADDR)
         self.entries += 1
         time.sleep(0.5)
-        # There is issue with IMONA PMBUs register, so we have to write 80 to register 04.
+        # IMONA PMBUs register, so we have to write 80 to register 04. It will enable all phase currents
         parallel_thread.write_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16), pullup_enable=1,
                                     clockrate=100, writesize=2, writedata=[4, 128])
         self.result = [self.entries]
@@ -4650,14 +4661,14 @@ class MyThread(QThread):
                 for k in self.ws.iter_rows(min_row=self.temp_row_number + 1, max_row=next_row_pointer_command_xlsx - 1,
                                            values_only=True):
                     time.sleep(0.05)
-                    abc.append(list(k))
+                    abc.append(list(k)) #Append all newly added PMBUS commands related ROWS to the list
 
                 # print(abc)
                 # print(self.temp_row_number)
                 # print(next_row_pointer_command_xlsx)
 
                 for j in abc:
-                    if 'PMBUS' in j[1]:
+                    if 'PMBUS' in j[1]: #check for PMBUS commands
                         self.row = j
                         time.sleep(0.1)
                         self.i2c_protocol()
@@ -4672,6 +4683,9 @@ class MyThread(QThread):
                 self.temp_row_number = next_row_pointer_command_xlsx - 1
             abc.clear()
 
+            #If a command is sent through PMBUS custom command frame, we need to set the payload display there, which is done in self.i2c_protocol()
+            #Once PMBUS related custom commands are executed, reset the variable to PMBus_send = False
+
             if PMBus_send:
                 PMBus_send = False
 
@@ -4680,7 +4694,8 @@ class MyThread(QThread):
                 time.sleep(0.1)
 
             if load_settings_done == "YES":
-                print_log("Previously saved MTP settings have been loaded on the device.", "INFO")
+                print_log("Previously "
+                          "saved MTP settings have been loaded on the device.", "INFO")
                 load_settings_done = "NO"
 
             # if stop_thread:
@@ -4731,7 +4746,7 @@ class MTP_register_database(QThread):
         # Page command  = 0 (RailA)
         parallel_thread.write_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16), pullup_enable=1,
                                     clockrate=100, writesize=2, writedata=[0, 0])
-
+        # Refreshing register database with non paged PMBUS commands
         for i in not_paged:
             if register_database[i]["Read_command_type"] == "Read Byte":
                 value = parallel_thread.read_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16),
@@ -4767,7 +4782,7 @@ class MTP_register_database(QThread):
                     format(x, '08b') for x in reversed(value))
                 # register_database[i]["Updated_device_MTP_value"] = ''.join(
                 #     format(x, '08b') for x in reversed(value))
-
+        #Refreshing register database with Paged_0 commands
         for i in paged_0:
             if register_database[i]["Read_command_type"] == "Read Byte":
                 value = parallel_thread.read_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16),
@@ -4812,6 +4827,7 @@ class MTP_register_database(QThread):
                                     writesize=2, writedata=[0, 1])
 
         for i in paged_1:
+            # Writing PAGE=FF , because few registers(word type) are not accessible with PAGE=1 as it has logic issue in PMBUS protocol.
             if (i == "331") or (i == "621") or (i == "601") or (i == "641") or (i == "271"):
                 # changing from 0x01 to 0xff (for freq switch problem)
                 parallel_thread.write_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16),
@@ -4832,7 +4848,7 @@ class MTP_register_database(QThread):
                 value = parallel_thread.read_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16), pullup_enable=1,
                                                    clockrate=100, writesize=1,
                                                    writedata=[int(i[0:-1], base=16)], noofbytestoread=2)
-
+                #Resetting the PAGE to 1 for few register which are of word type
                 if (i == "331") or (i == "621") or (i == "601") or (i == "641") or (i == "271"):
                     # changing from 0xff to 0x01 (for freq switch problem)
                     parallel_thread.write_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16),
@@ -4865,9 +4881,9 @@ class MTP_register_database(QThread):
         # Page = 0 (Rail A)
         parallel_thread.write_PMBus(voltagelevel=33, address_size=0, address=int(PMBUS_ADDR, 16), pullup_enable=1,
                                     clockrate=100, writesize=2, writedata=[0, 0])
-
+        #Once the Register data is refreshed with MTP from device, we need to write the lates settings to master command.xlsx
         update_master_command_xlsx_from_register_database()
-
+        #choose the resolution for VR output 5mV/10mV
         resolution_calculation(0)
 
         # Updating the home page labels when refresh condition is selected
@@ -4887,7 +4903,7 @@ class MTP_register_database(QThread):
         homeWin_obj.label_boot_vol_B.setText(str(round(float((int(initialize_feature_variable('E11', 23, 13), 2) * float(
             resolutionB) + offset[str(resolutionB)]) / 1000), 4) if int(initialize_feature_variable('E10', 23, 13),
                                                                     2) != 0 else int(0)) + "V")
-
+            #When refereshing and VR is enalbed, start the parallel thread.
         if homeWin_obj.pushButton_Enable_VR.isChecked():
             stop_thread = False
             parallel_thread.start()
@@ -13184,11 +13200,8 @@ class HomeWindow(QMainWindow, Ui_Home):
             self.pushButton_Enable_VR.setStyleSheet("QPushButton{\n"
                                                     "border-image: url(GUI_IMAGE/but0.png);\n"
                                                     "}\n"
-                                                    "\n"
-                                                    "\n"
                                                     "QPushButton::hover {\n"
-                                                    "border-image: url(GUI_IMAGE/but0_hover"
-                                                    ".png);\n "
+                                                    "border-image: url(GUI_IMAGE/but0_hover.png);\n "
                                                     "    }\n"
                                                     "")
             VR_Enabled = "OFF"
@@ -13293,8 +13306,8 @@ class HomeWindow(QMainWindow, Ui_Home):
         try:
             self.device_handler = usb_to_gpio.USB_TO_GPIO()
         except Exception as err:
-            print("oh")
-            print(err)
+            print("oh, issue with USB_to_GPIO hardware")
+            # print(err)
 
         if self.device_handler.adapter_status == 0:  # returns 0 if not connected
             TI_dongle_not_present = 1
@@ -13323,6 +13336,7 @@ class HomeWindow(QMainWindow, Ui_Home):
                                                    noofbytestoread=1)
                 device_status = "ON"
                 value = format(value[0], "08b")
+                # Register 02h based VR_enable override
                 if (value[3:6] == "000") or (value[3:6] == "001") or (value[3:6] == "010") or (value[3:6] == "011") or (value[3:6] == "100"):
                     VR_Enabled = "ON"
                     # power_up_device()
@@ -13605,6 +13619,7 @@ class HomeWindow(QMainWindow, Ui_Home):
         self.pushButton_Custom_protocol_config.clicked.connect(self.Custom_command_protocol_specific)
 
     def Refresh(self):
+        #We simpally recall the home window and go through the mast_command_xlsx update(use the old one or create a new master_command_xlsx)
         global homeWin_obj, initial_device_status, parallel_thread, stop_thread
         stop_thread = True
         time.sleep(2)
@@ -13629,7 +13644,7 @@ class HomeWindow(QMainWindow, Ui_Home):
             stop_thread = True
             time.sleep(1)
             testmode_entry()
-            number_of_times_mtp_burn = otp_test()
+            number_of_times_mtp_burn = otp_test()  # Returns number of times  OTP has been written
             testmode_entry()
             wrong_combo_popup = QMessageBox()
             wrong_combo_popup.setWindowTitle("Burn MTP")
@@ -13650,7 +13665,7 @@ class HomeWindow(QMainWindow, Ui_Home):
                 #                             pullup_enable=1, clockrate=100, writesize=2,
                 #                             writedata=[0, 0])
                 testmode_exit()
-                if PMBUS_ACK_status == 0:
+                if PMBUS_ACK_status == 0: # If successly burnt, show the notification and start the parallel_thread
                     print_log("MTP burn complete", "INFO")
                     # update the "Updated_device_MTP_value" key of register database with device read value. And check
                     # if device value is same as "Final_register_value" then MTP is burnt successfully for that command
@@ -13789,6 +13804,7 @@ class HomeWindow(QMainWindow, Ui_Home):
             self.label_RailB_on_img.setStyleSheet("image: url(GUI_IMAGE/power_grey_icon.png);")
 
     def Load_command_xlsx(self):
+        #Load the entire saved MTP settings from Setting.xlsx. Useful when a stored setting has to written on a new device.
         global initial_device_status, stop_thread, load_settings_done
         # command_xlsx_file_name = QFileDialog.getOpenFileName(self, 'Load File', '', '*.xlsx')
         # if len(command_xlsx_file_name[0]) and initial_device_status == 0:
@@ -13892,6 +13908,7 @@ class HomeWindow(QMainWindow, Ui_Home):
             print_log("Please check the device connection and PMBus Address.", "ERROR")
 
     def save_command_xlsx(self):
+        # It saves the entire MTP settings in a file named Setting.xlsx
         global initial_device_status
         # command_xlsx_file_name = QFileDialog.getSaveFileName(self, 'Save File', '', '*.xlsx')
         # if len(command_xlsx_file_name[0]) and initial_device_status == 0:
@@ -14184,7 +14201,7 @@ if __name__ == '__main__':
     parallel_thread = MyThread()
     myWin.show()
     SVID_custom_obj = SVID_custom_commands()
-    create_new_command_xlsx()  # it will create a fresh command.xlsx
+    # create_new_command_xlsx()  # it will create a fresh command.xlsx
     PMBus_custom_obj = PMBus_custom_commands()
 
     sys.exit(app.exec_())
