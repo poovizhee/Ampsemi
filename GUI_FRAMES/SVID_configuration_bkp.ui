@@ -1,0 +1,3935 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SVID_Configuration</class>
+ <widget class="QMainWindow" name="SVID_Configuration">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1042</width>
+    <height>734</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Device Configuration</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_SVID_Configuration">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>1021</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(38, 23, 255);
+color: rgb(255, 255, 255);
+border-radius:5px;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;SVID&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt; Configuration&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_display">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>1021</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border: 2px solid darkorange;
+border-radius:0px;
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="pushButton_Discard">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>650</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{background-color: rgb(219, 100, 17);
+color: rgb(255, 255, 255);
+border:none;
+}
+QPushButton::hover{
+border:2px solid red;
+background-color: orange;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Discard</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Save">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>650</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{background-color: rgb(0, 153, 74);
+color: rgb(255, 255, 255);
+border:none;
+}
+QPushButton::hover{
+border:2px solid green;
+background-color:lightgreen;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Save</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>10</y>
+       <width>141</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>SVID Address</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_3">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>180</y>
+       <width>141</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>SVID Protocol</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_4">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>285</y>
+       <width>131</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>SVID Vid Max</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_5">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>215</y>
+       <width>191</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>SVID All Call Address</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_6">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>250</y>
+       <width>141</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>SVID Icc Max</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_7">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>50</y>
+       <width>121</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>IMON Aux</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_8">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>10</y>
+       <width>161</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>SVID Temp Max</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_SVID_address">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>10</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>A</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_icc_max_railA">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>250</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>125</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_temp_max">
+     <property name="geometry">
+      <rect>
+       <x>830</x>
+       <y>10</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>27</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_vid_max_railA">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>285</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>1.25</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_10">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>10</y>
+       <width>81</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :         0x</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_svid_protocol_RailA">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>180</y>
+       <width>81</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>IMVP8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>IMVP9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>IMVP9.1</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_svid_protocol_RailB">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>180</y>
+       <width>81</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>IMVP8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>IMVP9</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>IMVP9.1</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_all_call_address_RailA">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>215</y>
+       <width>81</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Disabled</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E &amp; F</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_all_call_address_RailB">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>215</y>
+       <width>81</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Disabled</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>F</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E &amp; F</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_icc_max_railB">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>250</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>125</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_imon_aux">
+     <property name="geometry">
+      <rect>
+       <x>830</x>
+       <y>50</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>125</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_vid_max_railB">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>285</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>1.25</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_9">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>50</y>
+       <width>131</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>SVID Pin Max</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_Pin_max">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>50</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string>125</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_12">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>320</y>
+       <width>141</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Slew Rate Fast</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_slewrate_fast_RailA">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>320</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>0.12mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>0.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>12.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>15mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>17.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>20mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>22.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>25mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>27.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>30mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>32.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>35mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>37.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>40mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>48mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>60mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>80mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>96mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>125mV/μs</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_slewrate_fast_RailB">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>320</y>
+       <width>100</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>0.12mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>0.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>1mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>12.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>15mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>17.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>20mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>22.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>25mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>27.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>30mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>32.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>35mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>37.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>40mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>48mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>60mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>80mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>96mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>125mV/μs</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_13">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>570</y>
+       <width>141</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Slew Rate Slow</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_slew_rate_slow_railA">
+     <property name="geometry">
+      <rect>
+       <x>230</x>
+       <y>575</y>
+       <width>161</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 2</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_slew_rate_slow_railB">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>575</y>
+       <width>161</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 16</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 8</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 4</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Slew Rate Fast / 2</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_PMBus_override_railA">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>370</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>PMBus Vid override</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vid_resolution_RailA">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>410</y>
+       <width>75</width>
+       <height>26</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>5mV</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6.25mV</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10mV</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vid_resolution_RailB">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>410</y>
+       <width>75</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>5mV</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6.25mV</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10mV</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_16">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>460</y>
+       <width>201</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vid Resolution  source</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vid_sel_pin_resolution_railA">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>520</y>
+       <width>75</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>5mV</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10mV</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vid_sel_pin_resolution_railB">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>520</y>
+       <width>75</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>5mV</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>10mV</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_DisableA_2">
+     <property name="geometry">
+      <rect>
+       <x>827</x>
+       <y>100</y>
+       <width>47</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Disable</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_EnableA_2">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>100</y>
+       <width>45</width>
+       <height>13</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Enable</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_25">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>90</y>
+       <width>171</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>IMON Aux in PS3</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Enable_imon_aux_PS3">
+     <property name="geometry">
+      <rect>
+       <x>875</x>
+       <y>83</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="tabletTracking">
+      <bool>true</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+}
+
+
+QPushButton::hover {
+border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+	}
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="default">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QFrame" name="frame">
+     <property name="geometry">
+      <rect>
+       <x>610</x>
+       <y>130</y>
+       <width>391</width>
+       <height>481</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid black;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_6">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>390</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_18">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>90</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>0  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_7">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>440</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_6">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>390</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_3">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>240</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_1">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>140</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton_Enable_APD_railA">
+      <property name="geometry">
+       <rect>
+        <x>220</x>
+        <y>0</y>
+        <width>51</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="mouseTracking">
+       <bool>true</bool>
+      </property>
+      <property name="tabletTracking">
+       <bool>true</bool>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton{
+border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+}
+
+
+QPushButton::hover {
+border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+	}
+</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
+      <property name="default">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_20">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>190</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>2  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_4">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>290</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_0">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>90</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_3">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>240</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_5">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>340</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_2">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>190</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_0">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>90</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_19">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>140</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>1  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_22">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>290</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>4  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_A_1">
+      <property name="geometry">
+       <rect>
+        <x>80</x>
+        <y>140</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_21">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>240</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>3  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_27">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>440</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>7  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_24">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>390</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>6  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_23">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>340</y>
+        <width>31</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>5  :</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_2">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>190</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_5">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>340</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_7">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>440</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_PVID_B_4">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>290</y>
+        <width>130</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>13</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+      <property name="placeholderText">
+       <string>1.25</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_EnableA">
+      <property name="geometry">
+       <rect>
+        <x>280</x>
+        <y>10</y>
+        <width>47</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Enable</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_DisableA">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>12</y>
+        <width>47</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>Disable</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_17">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>10</y>
+        <width>111</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>PVID-Table</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_display_RailA">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>50</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>Alpha</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_display_RailB">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>50</y>
+        <width>100</width>
+        <height>30</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>Beta</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_42">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>91</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_43">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>142</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_44">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>198</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_45">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>242</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_46">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>298</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_47">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>348</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_48">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>392</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_49">
+      <property name="geometry">
+       <rect>
+        <x>351</x>
+        <y>442</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_RailA_50">
+      <property name="geometry">
+       <rect>
+        <x>380</x>
+        <y>120</y>
+        <width>20</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>V</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QFrame" name="frame_2">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>360</y>
+       <width>551</width>
+       <height>201</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: 1px solid black;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <widget class="QLabel" name="label_pmbus_vid_resolution">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>190</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
+      </property>
+      <property name="text">
+       <string>PMBus Vid resolution</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+     <widget class="QGroupBox" name="groupBox">
+      <property name="geometry">
+       <rect>
+        <x>260</x>
+        <y>80</y>
+        <width>131</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;</string>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QRadioButton" name="radioButton_vid_sel_pinA">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>50</y>
+         <width>111</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>VID_SEL Pin</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_internal_registerA">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>20</y>
+         <width>121</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Internal Register</string>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QGroupBox" name="groupBox_2">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>80</y>
+        <width>120</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border:none;</string>
+      </property>
+      <property name="title">
+       <string/>
+      </property>
+      <widget class="QRadioButton" name="radioButton_internal_registerB">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>20</y>
+         <width>121</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LeftToRight</enum>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>Internal Register</string>
+       </property>
+      </widget>
+      <widget class="QRadioButton" name="radioButton_vid_sel_pinB">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>50</y>
+         <width>111</width>
+         <height>17</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string>VID_SEL Pin</string>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_display_RailB_2">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>140</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Beta</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_display_RailA_2">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>140</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Alpha</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_32">
+     <property name="geometry">
+      <rect>
+       <x>241</x>
+       <y>480</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_33">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>570</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  : </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_37">
+     <property name="geometry">
+      <rect>
+       <x>430</x>
+       <y>50</y>
+       <width>20</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>W</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_38">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>250</y>
+       <width>20</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>A</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_39">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>290</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>V</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_40">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>10</y>
+       <width>21</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>°C</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_41">
+     <property name="geometry">
+      <rect>
+       <x>930</x>
+       <y>50</y>
+       <width>20</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>A</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_51">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>410</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_52">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>320</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_53">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>280</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_54">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>250</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_55">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>220</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_56">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>180</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_57">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>50</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_58">
+     <property name="geometry">
+      <rect>
+       <x>780</x>
+       <y>50</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_59">
+     <property name="geometry">
+      <rect>
+       <x>780</x>
+       <y>90</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_60">
+     <property name="geometry">
+      <rect>
+       <x>780</x>
+       <y>10</y>
+       <width>16</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_PMBus_override_railA_2">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>370</y>
+       <width>130</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>9</pointsize>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>PMBus Vid override</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>80</y>
+       <width>331</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QRadioButton" name="radioButton_pline">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>P-line</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_sline">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>20</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+      </property>
+      <property name="text">
+       <string>S-line</string>
+      </property>
+     </widget>
+    </widget>
+    <zorder>frame_2</zorder>
+    <zorder>frame</zorder>
+    <zorder>pushButton_Discard</zorder>
+    <zorder>pushButton_Save</zorder>
+    <zorder>label_RailA_2</zorder>
+    <zorder>label_RailA_3</zorder>
+    <zorder>label_RailA_4</zorder>
+    <zorder>label_RailA_5</zorder>
+    <zorder>label_RailA_6</zorder>
+    <zorder>label_RailA_7</zorder>
+    <zorder>label_RailA_8</zorder>
+    <zorder>lineEdit_SVID_address</zorder>
+    <zorder>lineEdit_icc_max_railA</zorder>
+    <zorder>lineEdit_temp_max</zorder>
+    <zorder>lineEdit_vid_max_railA</zorder>
+    <zorder>label_RailA_10</zorder>
+    <zorder>comboBox_svid_protocol_RailA</zorder>
+    <zorder>comboBox_svid_protocol_RailB</zorder>
+    <zorder>comboBox_all_call_address_RailA</zorder>
+    <zorder>comboBox_all_call_address_RailB</zorder>
+    <zorder>lineEdit_icc_max_railB</zorder>
+    <zorder>lineEdit_imon_aux</zorder>
+    <zorder>lineEdit_vid_max_railB</zorder>
+    <zorder>label_RailA_9</zorder>
+    <zorder>lineEdit_Pin_max</zorder>
+    <zorder>label_RailA_12</zorder>
+    <zorder>comboBox_slewrate_fast_RailA</zorder>
+    <zorder>comboBox_slewrate_fast_RailB</zorder>
+    <zorder>label_RailA_13</zorder>
+    <zorder>comboBox_slew_rate_slow_railA</zorder>
+    <zorder>comboBox_slew_rate_slow_railB</zorder>
+    <zorder>checkBox_PMBus_override_railA</zorder>
+    <zorder>comboBox_vid_resolution_RailA</zorder>
+    <zorder>comboBox_vid_resolution_RailB</zorder>
+    <zorder>label_RailA_16</zorder>
+    <zorder>comboBox_vid_sel_pin_resolution_railA</zorder>
+    <zorder>comboBox_vid_sel_pin_resolution_railB</zorder>
+    <zorder>label_DisableA_2</zorder>
+    <zorder>label_EnableA_2</zorder>
+    <zorder>label_RailA_25</zorder>
+    <zorder>pushButton_Enable_imon_aux_PS3</zorder>
+    <zorder>label_display_RailB_2</zorder>
+    <zorder>label_display_RailA_2</zorder>
+    <zorder>label_RailA_32</zorder>
+    <zorder>label_RailA_33</zorder>
+    <zorder>label_RailA_37</zorder>
+    <zorder>label_RailA_38</zorder>
+    <zorder>label_RailA_39</zorder>
+    <zorder>label_RailA_40</zorder>
+    <zorder>label_RailA_41</zorder>
+    <zorder>label_RailA_51</zorder>
+    <zorder>label_RailA_52</zorder>
+    <zorder>label_RailA_53</zorder>
+    <zorder>label_RailA_54</zorder>
+    <zorder>label_RailA_55</zorder>
+    <zorder>label_RailA_56</zorder>
+    <zorder>label_RailA_57</zorder>
+    <zorder>label_RailA_58</zorder>
+    <zorder>label_RailA_59</zorder>
+    <zorder>label_RailA_60</zorder>
+    <zorder>checkBox_PMBus_override_railA_2</zorder>
+    <zorder>groupBox_3</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="start_up_image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

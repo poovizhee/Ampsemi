@@ -1,0 +1,2923 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Fault_response</class>
+ <widget class="QMainWindow" name="Fault_response">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>888</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Fault</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_Transient">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>871</width>
+      <height>35</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(38, 23, 255);
+color: rgb(255, 255, 255);
+border-radius:5px;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Fault&lt;/span&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt; Response&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QFrame" name="frame_phase_display">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>40</y>
+      <width>871</width>
+      <height>651</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>50</weight>
+      <bold>false</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+border: 2px solid darkorange;
+border-radius:0px;
+</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="pushButton_Discard">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>600</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{background-color: rgb(219, 100, 17);
+color: rgb(255, 255, 255);
+border:none;
+}
+QPushButton::hover{
+border:2px solid red;
+background-color: orange;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Discard</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Save">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>600</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{background-color: rgb(0, 153, 74);
+color: rgb(255, 255, 255);
+border:none;
+}
+QPushButton::hover{
+border:2px solid green;
+background-color:lightgreen;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>Save</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_4">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>190</y>
+       <width>161</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Over Current Fault </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_5">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>230</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vout Over Voltage Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_display_RailB">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>350</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Beta</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_display_RailA">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>120</y>
+       <width>100</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Alpha</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_current_response_railA">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>195</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shutdown when tracking UVP hits</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shutdown after debounce time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shutdown</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>30</y>
+       <width>371</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_current_retry_railA">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>195</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_18">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>15</y>
+       <width>131</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Response Setting</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_current_delay_railA">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>195</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 100us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 200us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 400us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 800us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 1000us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 1600us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 2000us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 3200us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_19">
+     <property name="geometry">
+      <rect>
+       <x>470</x>
+       <y>15</y>
+       <width>91</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Retry Setting</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_20">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>15</y>
+       <width>261</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Retry delay Setting : Debounce delay</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_21">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>190</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_over_voltage_response_railA">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>235</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_over_voltage_delay_railA">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>235</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 0us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 2us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 4us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 6us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 8us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 10us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 12us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 14us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_22">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>230</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_over_voltage_retry_railA">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>235</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_temp_retry_railA">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>275</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_23">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>270</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_temp_delay_railA">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>275</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 1ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 2ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 3ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 4ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 5ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 6ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 8ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 10ms</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_9">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>270</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Over Temperature Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_temp_response_railA">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>275</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_under_voltage_retry_railA">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>315</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_24">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>310</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_under_voltage_delay_railA">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>315</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 5us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 10us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 20us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 40us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 80us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 160us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 320us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 640us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_10">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>311</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vout Under Voltage Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_under_voltage_response_railA">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>315</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vin_OV_retry">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>40</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_25">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>35</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vin_OV_delay">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>40</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 0us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 2us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 4us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 6us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 8us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 10us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 12us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 14us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_11">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>35</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vin Over Voltage Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vin_OV_response">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>40</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_13">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>76</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vin Under Voltage Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vin_UV_delay">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>80</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 5us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 10us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 20us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 40us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 80us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 160us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 320us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 640us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vin_UV_retry">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>80</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_26">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>75</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vin_UV_response">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>80</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_turn_on_time_response_railA">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>155</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_14">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>150</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vout Turn on time Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_27">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>150</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_12">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>510</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Over Temperature Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_6">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>430</y>
+       <width>161</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Over Current Fault </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_7">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>470</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vout Over Voltage Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_28">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>430</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_over_voltage_response_railB">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>475</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_under_voltage_delay_railB">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>555</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 5us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 10us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 20us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 40us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 80us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 160us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 320us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 640us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_temp_delay_railB">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>515</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 1ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 2ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 3ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 4ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 5ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 6ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 8ms</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 10ms</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_temp_retry_railB">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>515</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_temp_response_railB">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>515</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_15">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>551</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vout Under Voltage Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_16">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>390</y>
+       <width>211</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>Vout Turn on time Fault</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_current_response_railB">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>435</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shutdown when tracking UVP hits</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shutdown after debounce time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shutdown</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_current_retry_railB">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>435</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_under_voltage_response_railB">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>555</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_29">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>510</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_turn_on_time_response_railB">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>395</y>
+       <width>190</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Shutdown</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Shuts down after delay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Immediate Shuts down</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_30">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>470</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_over_voltage_retry_railB">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>475</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_over_voltage_delay_railB">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>475</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 0us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 2us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 4us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 6us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 8us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 10us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 12us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 14us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_over_current_delay_railB">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>435</y>
+       <width>270</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>1xMAX(TON DELAY,0.25ms): debounce 100us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>2xMAX(TON DELAY,0.25ms): debounce 200us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>3xMAX(TON DELAY,0.25ms): debounce 400us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>4xMAX(TON DELAY,0.25ms): debounce 800us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>5xMAX(TON DELAY,0.25ms): debounce 1000us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>6xMAX(TON DELAY,0.25ms): debounce 1600us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>7xMAX(TON DELAY,0.25ms): debounce 2000us</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>8xMAX(TON DELAY,0.25ms): debounce 3200us</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QComboBox" name="comboBox_vout_under_voltage_retry_railB">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>555</y>
+       <width>115</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 7pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>No Retry</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry first time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry second time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry third time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fourth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry fifth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Retry sixth time</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Not supported</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_RailA_31">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>550</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_RailA_32">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>390</y>
+       <width>31</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text">
+      <string>  :  </string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="start_up_image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SVID_custom_commands</class>
+ <widget class="QMainWindow" name="SVID_custom_commands">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>751</width>
+    <height>191</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Custom Command</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QFrame" name="frame_railA">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>751</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(201, 255, 226, 179);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>751</width>
+       <height>40</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(38, 23, 255);
+color: rgb(255, 255, 255);
+border-radius:5px;</string>
+     </property>
+     <property name="text">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;SVID&lt;/span&gt;: Command&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="comboBox_SVID_command">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>120</y>
+       <width>120</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QComboBox{
+font: 75 10pt &quot;MS Shell Dlg 2&quot;;
+color: black;
+
+	background-color: rgb(151, 188, 168);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold;
+border-radius:0px;
+}
+
+QListView {
+background-color:lightgreen;
+border-radius:0px;
+}
+</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>SetVID Fast</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SetVID Slow</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SetVID Decay</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SetPS</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SetRegAddr</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SetRegData</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>GetReg</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>SetWP</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_29">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>80</y>
+       <width>150</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 127);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Commands</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_35">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>80</y>
+       <width>151</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 127);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Acknowledgement</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_ACK">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>110</y>
+       <width>80</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LeftToRight</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(160, 188, 173);
+border-radius:2px;</string>
+     </property>
+     <property name="text">
+      <string>ACK</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_Payload">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>110</y>
+       <width>80</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_37">
+     <property name="geometry">
+      <rect>
+       <x>319</x>
+       <y>120</y>
+       <width>21</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 127);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>0x</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>80</y>
+       <width>120</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;</string>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <widget class="QRadioButton" name="radioButton_railA">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>10</y>
+        <width>80</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedStates"/>
+      </property>
+      <property name="text">
+       <string>Rail-A</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_railB">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>80</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial</family>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="locale">
+       <locale language="English" country="UnitedStates"/>
+      </property>
+      <property name="text">
+       <string>Rail-B</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="label_30">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>80</y>
+       <width>111</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 127);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Payload</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_Received_DATA">
+     <property name="geometry">
+      <rect>
+       <x>640</x>
+       <y>110</y>
+       <width>80</width>
+       <height>30</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 0, 0);
+border:1px solid white;
+border-radius:3px;
+}
+
+QLineEdit::hover{
+border:2px solid  rgb(173, 77, 12);
+}
+
+QLineEdit::focus{
+border:2px solid red;
+	background-color: rgb(255, 173, 101);
+}</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+     <property name="placeholderText">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_38">
+     <property name="geometry">
+      <rect>
+       <x>619</x>
+       <y>120</y>
+       <width>21</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 127);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>0x</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_31">
+     <property name="geometry">
+      <rect>
+       <x>620</x>
+       <y>80</y>
+       <width>121</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(0, 170, 127);
+color: rgb(0, 0, 0);</string>
+     </property>
+     <property name="text">
+      <string>Received Data</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Discard">
+     <property name="geometry">
+      <rect>
+       <x>340</x>
+       <y>160</y>
+       <width>80</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="focusPolicy">
+      <enum>Qt::ClickFocus</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{background-color: rgb(219, 100, 17);
+color: rgb(255, 255, 255);
+border:2px;
+}
+QPushButton::hover{
+border:2px solid red;
+background-color: orange;
+}
+</string>
+     </property>
+     <property name="text">
+      <string>SEND</string>
+     </property>
+    </widget>
+    <zorder>label_3</zorder>
+    <zorder>comboBox_SVID_command</zorder>
+    <zorder>label_35</zorder>
+    <zorder>label_ACK</zorder>
+    <zorder>lineEdit_Payload</zorder>
+    <zorder>label_37</zorder>
+    <zorder>label_29</zorder>
+    <zorder>groupBox</zorder>
+    <zorder>label_30</zorder>
+    <zorder>lineEdit_Received_DATA</zorder>
+    <zorder>label_38</zorder>
+    <zorder>label_31</zorder>
+    <zorder>pushButton_Discard</zorder>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../GUI_IMAGE/resource.qrc"/>
+ </resources>
+ <connections/>
+</ui>

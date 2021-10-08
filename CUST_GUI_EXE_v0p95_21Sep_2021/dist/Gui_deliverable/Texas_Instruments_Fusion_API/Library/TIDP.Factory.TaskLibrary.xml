@@ -1,0 +1,2471 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TIDP.Factory.TaskLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:TIDP.Factory.TaskLibrary.Manufacturing">
+            <summary>
+            deprecated from Manufacturing
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.TaskLibrary.Manufacturing.DEVICE_ID_HEX">
+            <summary>
+            this should probably go somewhere else as it is a nice table of default values for isolated mfr specific commands.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Download_via_Rom(System.String,System.Boolean,TIDP.Factory.TaskLibrary.Manufacturing.DataFlashOptions,System.Boolean,System.Boolean,System.Int32,System.Boolean,TIDP.PMBus.ProgramFlashBlockSelection,TIDP.PMBus.ProgramFlashChecksumCalculation,TIDP.PMBus.ProgramChecksumMode,System.Boolean,System.UInt64,System.Boolean,System.Boolean,System.UInt64,System.UInt64,System.UInt32,System.UInt32)">
+             <summary>
+             This task downloads firmware to a blank device that is in ROM mode.  This is in contrast to the other Firmware task named "Firmware_Update" that updates the firmware that is currently running
+             in Program mode.  Downloads Program flash and Data flash and sets to execute in Program mode after download is completed.  For downloading to a multiflash device or device with boot flash use Firmware_Download_via_Rom2.
+             </summary>
+             <remarks>This task should be placed in an INITIALIZATION activity.If Verify_Device_Has_Been_Trimmed  is True, we will verify the device has been trimmed during IC manufacturing before the firmware is downloaded while the device is in ROM mode,.
+             If the part has not been trimmed, the task will FAIL and firmware will not be downloaded. 
+             The check will only be performed if the device was in ROM mode and thus the device had no program. 
+             If you set Verify_Device_Has_Been_Trimmed to False, the trim check will not be performed.</remarks>
+             <param name="File_Name"></param>
+            <param name="Verify_Device_Has_Been_Trimmed">If Verify_Device_Has_Been_Trimmed  is True, we will verify the device has been trimmed during IC manufacturing before the firmware is downloaded while the device is in ROM mode</param>
+            <param name="Data_Flash_Option">Data flash option to download, skip, erase, or partially download what is in data flash.</param>
+            <param name="Display_PFLASH_Checkum_After_Download">Popup a message showing the PFLASH check sum after download.</param>
+             <param name="Boot_Needed">Does the device have a boot that is being used for bootflash?</param>
+             <param name="Boot_Size">What is the size of the boot flash? </param>
+             <param name="Multi_Flash">Does the device support multiflash? If true you need to set which pflash block to download to Pflash_Block</param>
+             <param name="PFlash_Block">Select Pflash block to download too.  Device must support multi-flash for this to work.</param>
+             <param name="PFlash_Checksum_From">If bootflash is present then the pflash checksum can include that in the calculation or not.</param>
+             <param name="Checksum_Mode">If is multi flash then an option will be given for the program flash checksum mode.  Otherwise default is to calculate and write.</param>
+             <param name="User_PFlash_Checksum">Checksum of what the program flash in the firmware should be.</param>
+             <param name="Validate_PFlash_Checksum_With_User_Checksum">Checksum that firmware should calculate to be.  This would help to ensure the right firmware file is downloaded.</param>
+             <param name="User_2K_BFlash_Checksum">Checksum of what the flash downloaded should be.</param>
+             <param name="User_Above_2K_BFlash_Checksum">Checksum of what the flash downloaded should be.</param>
+             <param name="Validate_2K_BFlash_Checksum_With_User_Checksum">Validate by specifying what the checksum is expected to be after the ROM/GUI calculate.  This would help to ensure the right firmware file is downloaded.</param>
+             <param name="Validate_Above_2K_BFlash_Checksum_With_User_Checksum">Validate by specifying what the checksum is expected to be after the ROM/GUI calculate.  This would help to ensure the right firmware file is downloaded.</param>
+             <param name="Data_Flash_Option_Begin_Page">First page to be included in partial download DF</param>
+             <param name="Data_Flash_Option_Final_Page">Last page to be included in partial download DF</param>        
+             <returns></returns>        
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Erase_Data_Flash(System.Boolean,System.Boolean)">
+            <summary>
+            Erases data flash. This can be used to get your device back to it’s original unconfigured “factory” state.        
+            </summary>
+            <remarks>
+            This task will send the device to ROM mode, erase data flash, optionally write the pflash checksum, 
+            instruct the ROM to execute the program, and then wait for the device to come online.
+            </remarks>
+            <param name="write_pflash_checksum">Write program flash checksum?  If true on device restart the program will be executed.</param>
+            <param name="write_aa_pattern">write_aa_pattern?  If true an 0xAA pattern (and if false, an 0xFF pattern) will be written to data flash.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Send_All_To_Program_Mode">
+            <summary>
+             A series of SMBus commands will be executed instructing any UCD91XX or UCD92XX ROM present at address 11 
+             to execute their programs. While this is normally not needed in production devices that have been programmed 
+             to execute their programs when power is applied, TI developers often configure devices to remain in ROM mode 
+             at power up. This task therefore provides a way to handle this situation. 
+            </summary>
+            <remarks>
+            Broadcasts to all devices listening on address 0x0B (11d) 
+            to execute their program.
+            </remarks>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Override_MFR_Commands(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Manufacturing command hex codes that can be changed if the firmware implements them at another hex code.  Applies to UCD31XX isolated devices.
+            </summary>
+            <remarks>
+            This should be placed in an INITIALIZATION task since it will affect how the device is scanned.
+            </remarks>
+            <param name="device_id_override">Override device_id?</param>
+            <param name="enable_rom_mode_override">Override enable_rom_mode?</param>
+            <param name="enable_rom_mode_2_override">Override enable_rom_mode_2?</param>
+            <param name="device_id">New hex code</param>
+            <param name="enable_rom_mode">New hex code</param>
+            <param name="enable_rom_mode2">New hex code</param>
+            <param name="cmds_dcdc_nonpaged">New hex code</param>
+            <param name="cmds_dcdc_nonpaged_override">Override command?</param>
+            <param name="cmds_dcdc_paged">New hex code</param>
+            <param name="cmds_dcdc_paged_override">Override command?></param>
+            <param name="cmds_pfc">New hex code</param>
+            <param name="cmds_pfc_override">Override command?</param>
+            <param name="parm_info">New hex code</param>
+            <param name="parm_info_override">Override command?</param>
+            <param name="parm_value">New hex code</param>
+            <param name="parm_value_override">Override command?</param>     
+            <param name="setup_id">New hex code</param>
+            <param name="setup_id_override">Override command?</param>
+            <param name="configure_mode_switching">New hex code</param>
+            <param name="configure_mode_switching_override">Override command?</param>
+            <param name="light_load_configuration">New hex code</param>
+            <param name="light_load_configuration_override">Override command?</param>
+            <param name="filter_7">New hex code</param>
+            <param name="filter_7_override">Override command?</param>
+            <param name="filter_select">New hex code</param>
+            <param name="filter_select_override">Override command?</param>
+            <param name="deadband_config">New hex code</param>
+            <param name="deadband_config_override">Override command?</param>
+            <param name="constant_power_constant_current">New hex code</param>
+            <param name="constant_power_constant_current_override">Override command?</param>
+            <param name="current_share">New hex code</param>
+            <param name="current_share_override">Override command?</param>
+            <param name="sr_on">New hex code</param>
+            <param name="sr_on_override">Override command?</param>      
+            <param name="flash_key">New hex code</param>
+            <param name="flash_key_override">Override command?</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Serial_Number(System.Boolean,System.Double,System.Double)">
+            <summary>
+            Sets serial number for the device(MFR_SERIAL).  This is either obtained from the user via a dailog 
+            or is automatically obtained if <b>Automated</b> is set to true.  Starting value and increment are used in both automation or manual.  If in manual it will 
+            propose the next value to the user so they would only need to press enter as opposed to entering it.
+            </summary>
+            <remarks>It should be noted that even though the serial number is incremented on subsequent runs it will start back from the starting_value set if the GUI is restarted.</remarks>
+            <param name="Automated">If set to true will not prompt the user for a serial number</param>
+            <param name="Starting_Value">For the first board run with this script when the Manufacturing GUI starts will start with this number</param>
+            <param name="Increment">This increment will be added to the Starting value and will either propose the number to the user if Automated is false or will add it automatically and write to MFR_SERIAL.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Manufacturing_Date(System.String)">
+            <summary>
+            Based on the string format will set the mfr_date accordingly.
+            </summary>
+            <remarks>
+            Format examples:<ol>
+            <li>yyMMdd would represent June 10 2008 as 080610</li>
+            <li>MMddyy would represent June 10 2008 as 061008</li>
+            <li>ddMMyy would represent June 10 2008 as 100608</li>
+            <li>yy_MM would represent June 10 2008 as 08_06</li>
+            </ol>
+            <b><u>many possiblities keep in mind that the mfr_date field has a limited number of characters if it is exceded then the task will fail.  For UCD9240 it is 6 characters.</u></b>
+            </remarks>
+            <param name="date_format"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Power_Supply_Setting(System.Double,System.Double,System.Boolean)">
+            <summary>
+            Set the input voltage and current limit(Constant Voltage mode).
+            </summary>
+            <remarks>If it is not instrumented then will display a pop-up telling the user to set the input voltage and the current limit
+            to the specifications provided.
+            In addition to this task you will need to follow it up with a Turn_DCSource_Output_On task as this function only configures what voltage/current the DCSource should be on.  The other task indicates when to turn it on(or in manual to connect it to the input).
+            </remarks>
+            <param name="Input_Voltage_V">The input voltage desired.</param>
+            <param name="Current_Limit_A">The input current desired.</param>
+            <param name="instrumented">Set to true if instrumented.</param>
+            <returns></returns>        
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.UCD91XX_Start_Up">
+            <summary>
+            91XX device specifically and is for 91xx to see that the device is running properly with the appropriate lights.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Cycle_Input_Power(System.Double,System.Double,System.Boolean,System.Int32)">
+            <summary>
+            If instrumented will cause the power to turn off by turning the output off and holding it off for time_to_hold_off_ms
+            and back on again at the specified voltage and current.  If not instrumented will ask the user to do so via pop-up box.
+            </summary>
+            <remarks>Basically a reset to configured voltage and current limit.</remarks>
+            <param name="input_voltage_V">The voltage to set to after turning the DCSource back on.</param>
+            <param name="current_limit_A">The current to set to after turning the DCSource back on.</param>
+            <param name="instrumented">If instrumented equipment that supplys input voltage is to be used.</param>
+            <param name="time_to_keep_off_ms">how long to keep the power supply off before turning back on.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Turn_DCSource_Output_On(System.Boolean)">
+            <summary>
+            Turns the dcsource's output on.
+            </summary>
+            <remarks>
+            The SCPI equivalent is "OUT 1"
+            </remarks>
+            <param name="instrumented">Set to true if instrumented.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Turn_DCSource_Output_Off(System.Boolean)">
+            <summary>
+            Turns the dcsource's output off.  This is part of the shutdown instrumentation task.
+            </summary>
+            <remarks>
+            The SCPI equivalent is "OUT 0"
+            </remarks>
+            <param name="instrumented">Set to true if instrumented.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Stop_Conversion(System.Int32)">
+            <summary>
+            Stops converting on all rails and sleeps for <b>sleep_msecs</b>.
+            </summary>
+            <remarks>Sleep time specified should be enough such that you know the rails have gone to 0 volts.</remarks>
+            <param name="sleep_msecs">Amount of time to halt all execution after the stop conversion command.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Start_Conversion(System.Int32)">
+            <summary>
+            Starts conversion on the specified rail.
+            </summary>
+            <param name="rail_number"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Start_Conversion_All_Rails">
+            <summary>
+            Starts conversion on all configured rails.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Configure_and_Validate(System.String,System.Boolean,TIDP.Factory.TaskLibrary.Manufacturing.ConfigProjectDevice,System.Boolean,System.Int32)">
+            <summary>
+            Configure all parameters on device based on project file from Fusion Power Design GUI.
+            </summary>
+            <remarks>Takes project file and identifies the set of parameters to take from a project file based on the config_value.  There is also the option to store to the device after the configuration is completed.
+            A parameter check is done to compare which parameters differ between the device and project file.  A write is then done on those select differences.  
+            However if you set <b>force_write_of_all to true</b> then it will write every parameter from the project file to the device.</remarks>
+            <param name="file_location">The project file that contains the device configuration desired.</param>
+            <param name="store_to_flash">Set to true to store the newly configured parameters to flash.</param>
+            <param name="device_choice">Choose which device setting you want to use to locate device in project file.</param>
+            <param name="force_write_of_all">Set to true if you want all project file parameters to be written to the device even if they are the same.</param>       
+            <param name="device_address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Override_Configure_and_Validate_Address_Visibility(TIDP.Factory.TaskLibrary.Manufacturing.ConfigProjectDevice)">
+            <summary>
+            used by Firmware_Download and Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Import_Config_and_Validate(TIDP.PMBus.PMBusDevice,TIDP.PMBus.ImportExport.ProjectData,System.Boolean,System.Boolean)">
+            <summary>
+            Import configuration from a project data. This task is used only for "Import_System_File" task only so that GUI can display the tasks for each device in the system. 
+            User cannot input project_data, nor device, therefore, should not be used as a stand-alone task. Use "Configure_and_Validate" task instead
+            </summary>
+            <param name="device">PMBus device that the project_data will be imported to</param>
+            <param name="project_data"> configuration extracted from the system file (.tifsp)</param>
+            <param name="store_to_flash">If set, store the import configuration to flash when done</param>
+            <param name="force_write_of_all">If set, force to write all the parameters even though they are the same as the one stored in the system file</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Validate_Configuration(System.String,TIDP.Factory.TaskLibrary.Manufacturing.ConfigProjectDevice,System.Int32)">
+            <summary>
+            Validate that the configuration in a project file is the same as what is currently on the device.  
+            </summary>
+            <remarks>Takes project file and identifies the set of parameters to take from a project file based on the config_value.  There is also the option to store to the device after the configuration is completed.</remarks>
+            <param name="file_location">Specify the file location of the project file that is obtained from the Fusion Design GUI.</param>
+            <param name="device_choice">Set the config_value based on where you want to get your data from in the project file.</param>
+            <param name="device_address">conditional parameter based on whether device choice is set to specific address.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Data_Flash_Download(System.String,System.String)">
+            <summary>
+            Writes a data flash image to the device when in <b>program mode.</b> 
+            </summary>
+            <remarks>
+            The device must already be in <b>program mode.</b> for this task. To perform the write, the task will send the device to ROM mode, download data flash, verify the data flash 
+            written by reading it back, re-write the program flash checksum on the device, and then execute the program. 
+            If any of these steps fail, the task will fail and you should check the log for details.
+            </remarks>
+            <param name="data_flash_file_location">An S-Record or Intel Hex data flash EEPROM image file.
+            Exported through the Fusion Digital Power Studio’s File->Export tool. 
+            </param>
+            <param name="required_firmware_version">Data flash configuration files are generally only compatible with a specific firmware release.  Enter the firmware version, such as 3.25.0.8662, that must be present for the data flash download to proceed.
+            If there is no match, the task will abort with an error.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update(System.String,TIDP.Factory.TaskLibrary.UCD9XXX.ConditionForFlash,System.String,System.Boolean,TIDP.Factory.TaskLibrary.Manufacturing.DataFlashOptions,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Boolean,TIDP.PMBus.ProgramFlashBlockSelection,TIDP.PMBus.ProgramFlashChecksumCalculation,TIDP.PMBus.ProgramChecksumMode,System.Boolean,System.UInt64,System.Boolean,System.Boolean,System.UInt64,System.UInt64,System.UInt32,System.UInt32,System.Boolean)">
+            <summary>
+            This task downloads the specified firmware to the device(non-volatile memory).  
+            You can avoid downloading firmware already loaded onto the device by setting the 
+            parameter <b>Condition_For_Flash</b> to DeviceVersionIsLower or DeviceVersionDiffers and specifying the version
+            of the x0 file in the <b>Version_Number</b> parameter.
+            If you always want to download no matter what is on the device, then set 
+            Condition_For_Flash to "AlwaysFlash" .  Refer to the User Guide - Script Writer in the help menu for more complex examples of downloading firmware.
+            </summary>
+            <remarks>
+            The "Condition_For_Flash" parameter is a great way to speed up your script if you need to re-run. 
+            This task should be placed in an Activity of type Normal.
+            </remarks>
+            <param name="FileLocation">The file location of the firmware. Tektronix Extended (x0), Intel Hex, and Motorola S-Record formats are supported. The extension will normally be .x0, .srec, .hex, or .text.</param>
+            <param name="Condition_For_Flash">Condition for when to download firmware. "DeviceVersionDiffers" - downloads if the firmware version on device is different from firmware file. "DeviceVersionIsLower" - downloads if the device version is lower than the firmware file.</param>
+            <param name="Version_Number">The version of the firmware entered in the FileLocation parameter</param>
+            <param name="Verify_Device_Has_Been_Trimmed">If set to true, the task will verify the device has been trimmed during manufacturing. If the device has not been trimmed, the task will FAIL. There should not be any reason to set this to false. </param>
+            <param name="Data_Flash_Option">Whether to download, skip, partial download or erase what is in data flash.</param>
+            <param name="Restore_Current_Config">If set to true, the current PMBus configuration on the device will be restored after firmware download. The restore will only be performed if firmware was actually updated. This option allows for easy one task "firmware upgrade" where you want to maintain old device configuration, especially items like calibration settings.</param>
+            <param name="Display_PFLASH_Checkum_After_Download">Popup a message showing the PFLASH check sum after download.</param>
+            <param name="Boot_Needed">Does the device have a boot that is being used for bootflash?</param>
+            <param name="Boot_Size">What is the size of the boot flash? </param>
+            <param name="Multi_Flash">Does the device support multiflash? If true you need to set which pflash block to download to Pflash_Block</param>
+            <param name="PFlash_Block">Select Pflash block to download too.  Device must support multi-flash for this to work.</param>
+            <param name="PFlash_Checksum_From">If bootflash is present then the pflash checksum can include that in the calculation or not.</param>
+            <param name="Checksum_Mode">If is multi flash then an option will be given for the Program flash checksum mode.  Otherwise default is to calculate and write.</param>
+            <param name="User_PFlash_Checksum">Checksum of what the flash downloaded should be.</param>
+            <param name="Validate_PFlash_Checksum_With_User_Checksum">Validate by specifying what the checksum is expected to be after the ROM/GUI calculate.  This would help to ensure the right firmware file is downloaded.</param>
+            <param name="User_2K_BFlash_Checksum">Checksum of what the flash downloaded should be.</param>
+            <param name="User_Above_2K_BFlash_Checksum">Checksum of what the flash downloaded should be.</param>
+            <param name="Validate_2K_BFlash_Checksum_With_User_Checksum">Validate by specifying what the checksum is expected to be after the ROM/GUI calculate.  This would help to ensure the right firmware file is downloaded.</param>
+            <param name="Validate_Above_2K_BFlash_Checksum_With_User_Checksum">Validate by specifying what the checksum is expected to be after the ROM/GUI calculate.  This would help to ensure the right firmware file is downloaded.</param>
+            <param name="Data_Flash_Option_Begin_Page">First page to be included in partial download DF</param>
+            <param name="Data_Flash_Option_Final_Page">Last page to be included in partial download DF</param> 
+            <param name="Split_Boot">Is split boot?</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Download_via_Rom_Pflash_Checkum_Includes_Boot_Visibility(System.Boolean)">
+            <summary>
+            This is a conditional property for Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Download_via_Rom_Flash_Block_Visibility(System.Boolean)">
+            <summary>
+            This is a conditional property for Firmware_Update also
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_User_Checksum_Visibility(System.Boolean)">
+            <summary>
+            used by Firmware_Download and Firmware_Update
+            </summary>
+            <param name="Validate_PFlash_Checksum_With_User_Checksum"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_User_Above_2K_Boot_Checksum_Visibility(System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            used by Firmware_Download and Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_User_2K_Boot_Checksum_Visibility(System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            used by Firmware_Download and Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_Above_2K_Boot_Size_Visibility(System.Boolean,System.Int32)">
+            <summary>
+            used by Firmware_Download and Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Download_via_Rom_Boot_Size_Visibility(System.Boolean)">
+            <summary>
+            This is a conditional property for Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_Pflash_Checkum_Includes_Boot_Visibility(System.Boolean)">
+            <summary>
+            This is a conditional property for Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_Flash_Block_Visibility(System.Boolean)">
+            <summary>
+            This is a conditional property for Firmware_Update
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_Boot_Size_Visibility(System.Boolean)">
+            <summary>
+            This is a conditional property for Firmware_Update        
+            used by Firmware_Download and Firmware_Update.        
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Update_VersionNumber_Visibility(TIDP.Factory.TaskLibrary.UCD9XXX.ConditionForFlash)">
+            <summary>
+            This is a conditional property for Firmware_Update
+            </summary>        
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Send_Any_Device_To_ROM(TIDP.PMBus.PartID,System.Int32,System.Boolean)">
+            <summary>
+            Scans the bus for the specified device and sends it to ROM mode. 
+            </summary>
+            <remarks></remarks>
+            <param name="part_id">Part ID for the device you wish to send to ROM mode.</param>
+            <param name="address">Address of device in program mode.</param>
+            <param name="pass_if_specified_device_not_present">If the above device cannot be found setting this to true will still pass this task.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Send_Any_Device_To_ROM2(TIDP.PMBus.PartID,TIDP.Factory.TaskLibrary.AddressesToIncludeOrExclude,System.Boolean)">
+            <summary>
+            Devices that are found in program mode located at the addresses described in "address_to_include_or_exclude" will be sent to ROM mode.
+            </summary>
+            <param name="part_id">If specified will send to ROM mode if address meets criteria in "address_to_include_or_exclude". If unknown select unknown.</param>
+            <param name="address_to_include_or_exclude">Indicate which addresses to include or exclude in scanning process.</param>
+            <param name="pass_if_no_devices_sent_to_rom">If no devices are found setting to true will be treated as a pass.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Firmware_Download_via_Rom(System.String,System.Boolean,TIDP.Factory.TaskLibrary.Manufacturing.DataFlashOptions,System.Boolean,System.Boolean,System.Int32,System.Boolean,TIDP.PMBus.ProgramFlashBlockSelection,TIDP.PMBus.ProgramFlashChecksumCalculation,TIDP.PMBus.ProgramChecksumMode,System.Boolean,System.UInt64,System.Boolean,System.Boolean,System.UInt64,System.UInt64,System.UInt32,System.UInt32,System.Boolean)">
+             <summary>
+             This task downloads firmware to a blank device that is in ROM mode.  This is in contrast to the other Firmware task named "Firmware_Update" that updates the firmware that is currently running
+             in Program mode.  Downloads Program flash and Data flash and sets to execute in Program mode after download is completed.  For downloading to a multiflash device or device with boot flash use Firmware_Download_via_Rom2.
+             </summary>
+             <remarks>This task should be placed in an INITIALIZATION activity.If Verify_Device_Has_Been_Trimmed  is True, we will verify the device has been trimmed during IC manufacturing before the firmware is downloaded while the device is in ROM mode,.
+             If the part has not been trimmed, the task will FAIL and firmware will not be downloaded. 
+             The check will only be performed if the device was in ROM mode and thus the device had no program. 
+             If you set Verify_Device_Has_Been_Trimmed to False, the trim check will not be performed.</remarks>
+             <param name="File_Name"></param>
+            <param name="Verify_Device_Has_Been_Trimmed">If Verify_Device_Has_Been_Trimmed  is True, we will verify the device has been trimmed during IC manufacturing before the firmware is downloaded while the device is in ROM mode</param>
+            <param name="Data_Flash_Option">Data flash option to download, skip, erase, or partially download what is in data flash.</param>
+            <param name="Display_PFLASH_Checkum_After_Download">Popup a message showing the PFLASH check sum after download.</param>
+             <param name="Boot_Needed">Does the device have a boot that is being used for bootflash?</param>
+             <param name="Boot_Size">What is the size of the boot flash? </param>
+             <param name="Multi_Flash">Does the device support multiflash? If true you need to set which pflash block to download to Pflash_Block</param>
+             <param name="PFlash_Block">Select Pflash block to download too.  Device must support multi-flash for this to work.</param>
+             <param name="PFlash_Checksum_From">If bootflash is present then the pflash checksum can include that in the calculation or not.</param>
+             <param name="Checksum_Mode">If is multi flash then an option will be given for the program flash checksum mode.  Otherwise default is to calculate and write.</param>
+             <param name="User_PFlash_Checksum">Checksum of what the program flash in the firmware should be.</param>
+             <param name="Validate_PFlash_Checksum_With_User_Checksum">Checksum that firmware should calculate to be.  This would help to ensure the right firmware file is downloaded.</param>
+             <param name="User_2K_BFlash_Checksum">Checksum of what the flash downloaded should be.</param>
+             <param name="User_Above_2K_BFlash_Checksum">Checksum of what the flash downloaded should be.</param>
+             <param name="Validate_2K_BFlash_Checksum_With_User_Checksum">Validate by specifying what the checksum is expected to be after the ROM/GUI calculate.  This would help to ensure the right firmware file is downloaded.</param>
+             <param name="Validate_Above_2K_BFlash_Checksum_With_User_Checksum">Validate by specifying what the checksum is expected to be after the ROM/GUI calculate.  This would help to ensure the right firmware file is downloaded.</param>
+             <param name="Data_Flash_Option_Begin_Page">First page to be included in partial download DF</param>
+             <param name="Data_Flash_Option_Final_Page">Last page to be included in partial download DF</param>  
+             <param name="Split_Boot">Is Split Boot?</param>
+             <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Send_Byte(System.Byte,System.Boolean)">
+            <summary>
+            Send a command byte via SAA Adapter to device using either the device address/rom address depending on "program_mode" value.
+            If program_mode is false address 11 will be used for ROM.
+            Another assumption is that the device supports this type of transaction.
+            </summary>        
+            <param name="cmd_byte">command byte</param>
+            <param name="program_mode">if rom mode set to false</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Send_Byte_General(System.Byte,System.Byte)">
+            <summary>
+            Send a command byte via SAA Adapter using address provided
+            </summary>
+            <param name="cmd_byte">command byte</param>
+            <param name="address">address to send to</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Write_Byte(System.Byte,System.Byte,System.Boolean)">
+            <summary>
+            Write a byte via SAA Adapter to device using either the device address/rom address depending on "program_mode" value.
+            If program_mode is false address 11 will be used for ROM.
+            Another assumption is that the device supports this type of transaction.
+            </summary>
+            <param name="cmd_byte">command byte</param>
+            <param name="data">byte data to be sent</param>
+            <param name="program_mode">if rom mode set to false</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Write_Byte_General(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Write a byte via SAA Adapter to device using the address provided.
+            Another assumption is that the device supports this type of transaction.
+            </summary>
+            <param name="cmd_byte">command byte</param>
+            <param name="data">byte data to be sent</param>
+            <param name="address">address to send to</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Write_Block(System.Byte,System.String,System.Boolean)">
+            <summary>
+            Write a block via SAA Adapter to device using either the device address/rom address depending on "program_mode" value.        
+            If program_mode is false address 11 will be used for ROM.
+            Another assumption is that the device supports this type of transaction.
+            </summary>
+            <remarks>  
+            Supported formats include "0F-DE", "0FDE", "0F DE", "0x0fDE", and 
+            "Fh". Partial bytes are supported. For example, 0xa (0A) or A0F (0A0F).
+            </remarks>          
+            <param name="cmd_byte">command byte</param>
+            <param name="hex_data">bytes data to be sent in hex format</param>
+            <param name="program_mode">if rom mode set to false</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Write_Block_General(System.Byte,System.String,System.Byte)">
+            <summary>
+            Write a block via SAA Adapter to device using address provided.
+            Another assumption is that the device supports this type of transaction.
+            </summary>
+            <remarks>  
+            Supported formats include "0F-DE", "0FDE", "0F DE", "0x0fDE", and 
+            "Fh". Partial bytes are supported. For example, 0xa (0A) or A0F (0A0F).
+            </remarks>          
+            <param name="cmd_byte">command byte</param>
+            <param name="hex_data">bytes data to be sent in hex format</param>
+            <param name="address">Address to send to</param>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:TIDP.Factory.TaskLibrary.Manufacturing.Write_Word(System.Byte,System.String,System.Boolean)" -->
+        <!-- Badly formed XML comment ignored for member "M:TIDP.Factory.TaskLibrary.Manufacturing.Write_Word_General(System.Byte,System.String,System.Byte)" -->
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Read_Byte(System.Byte,System.Byte,System.Boolean,System.Boolean)">
+            <summary>
+            Reads a byte from the device given the address and cmd_byte and compares it to the expected_value.
+            </summary>
+            <remarks>If this is set for ROM mode and if the device is found to not be in ROM mode, i.e in program mode then the task would fail unless the property skip_if_device_not_in_rom_mode is set to true.  
+            The task will then pass.</remarks>
+            <param name="cmd_byte">command byte</param>
+            <param name="expected_value">expected byte</param>
+            <param name="program_mode">program mode= true, rom mode= false</param>
+            <param name="skip_if_device_not_in_rom_mode">if this "read" is for ROM mode and the device is Program mode the task will be skipped</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Read_Byte_General(System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Send a readbyte over SMBus Adapter.  Can be used in Initialization or Normal.  If you want the address automatcially
+            </summary>
+            <param name="cmd_byte">command byte</param>
+            <param name="expected_value">expected byte</param>
+            <param name="address">address to send to</param>        
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Read_Block(System.Byte,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Reads a block from the device and cmd_byte and compares it to the expected_value.
+            </summary>
+            <remarks>If this is set for ROM mode and if the device is found to not be in ROM mode, i.e in program mode then the task would fail unless the property skip_if_device_not_in_rom_mode is set to true.  
+            The task will then pass.</remarks>
+            <param name="cmd_byte">command byte</param>
+            <param name="expected_hex_value">expected block in hex: Supported formats include "0F-DE", "0FDE", "0F DE", "0x0fDE", and 
+            "Fh". Partial bytes are supported. For example, 0xa (0A) or A0F (0A0F).</param>        /// 
+            <param name="program_mode">program mode= true, rom mode= false</param>  
+            <param name="skip_if_device_not_in_rom_mode">if this "read" is for ROM mode and the device is Program mode the task will be skipped</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.I2C_Read_General(System.Byte,System.Int32,System.String,System.Byte,TIDP.Factory.TaskLibrary.UCD9XXX.ActionOnFail,System.Boolean,TIDP.Factory.TaskLibrary.UCD9XXX.ActionOnPass,System.Boolean)">
+            <summary>
+            This task does an I2C read using the address, command byte, and length specified.  If the value read does not equal the value expected, then the user has the choice of how to respond.
+            If action_on_equal is set to fail, then the task will fail.  If action_on_unequal is set to Go2Rom, then it sends the enable rom mode command to go back to ROM mode.  You can also send the flash key immediately before is set to true.
+            The flash key is used to protect the flash from accidental writes.
+            
+            If issuing the command and the address is not equal to 11 and the skip_on_Nack_if_in_ROM property is set to true, then if the device is in ROM mode (i.e responds in address 11), then it will skip if that property is set to true.
+            </summary>
+            <param name="cmd_byte">command byte</param>
+            <param name="length">how many bytes</param>
+            <param name="expected_hex_value">expected hex value (do NOT include "0x" at the front)</param>
+            <param name="address">address to send command to</param>
+            <param name="action_on_unequal">what response to take if the expected value does not equal the read value</param>
+            <param name="action_on_equal">what response to take if the expected value equals the read value</param>
+            <param name="skip_on_NACK_if_in_ROM">skip if the reason for NACK is that the device is in ROM mode.</param>
+            <param name="write_flash_key">Visible if action</param>
+            <remarks>Can be used in Normal or Initialization activites</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.SAA_Scan_Control_Lines">
+            <summary>
+            Scans the adapters and prints out the control line values for each adapter.  This can be used for debugging.
+            </summary>      
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.SAA_Identifier(TIDP.Factory.TaskLibrary.Manufacturing.ControlLineState,TIDP.Factory.TaskLibrary.Manufacturing.ControlLineState,TIDP.Factory.TaskLibrary.Manufacturing.ControlLineState,TIDP.Factory.TaskLibrary.Manufacturing.ControlLineState,TIDP.Factory.TaskLibrary.Manufacturing.ControlLineState)">
+            <summary>
+            In the case of multiple SAA adapters specify which adapter should be used by identifying the control lines that should be high or low on an adapter.
+            This task will change the default adapter used by other tasks.  If there are multiple devices on different SAAs, then his task can be used in an
+            Initialization activity for each device to specify the SAA adapter by identifying the control lines high or low on that adapter.  If there are more than one adapter with the same control
+            line configurations then the first adapter that satisifes the configuration will be used.
+            </summary>
+            <param name="control_line_1"></param>
+            <param name="control_line_2"></param>
+            <param name="control_line_3"></param>
+            <param name="control_line_4"></param>
+            <param name="control_line_5"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Read_Block_General(System.Byte,System.String,System.Byte)">
+            <summary>
+            Reads a block from the device given the address and cmd_byte and compares it to the expected_value.
+            </summary>
+            <remarks>Can be used in Initialization and Normal activities</remarks>
+            <param name="cmd_byte">command byte</param>
+            <param name="expected_hex_value">expected block in hex: Supported formats include "0F-DE", "0FDE", "0F DE", "0x0fDE", and 
+            "Fh". Partial bytes are supported. For example, 0xa (0A) or A0F (0A0F).</param>  
+            <param name="address">Address to send to</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Read_Word(System.Byte,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Reads a word (2 bytes) from the device and cmd_byte and compares it to the expected_value.
+            </summary>
+            <remarks>If this is set for ROM mode and if the device is found to not be in ROM mode, i.e in program mode then the task would fail unless the property skip_if_device_not_in_rom_mode is set to true.  
+            The task will then pass.</remarks>
+            <param name="cmd_byte">command byte</param>
+            <param name="expected_hex_value">expected word in hex: Supported formats include "0F-DE", "0FDE", "0F DE", "0x0fDE", and 
+            "Fh". High byte first. Partial bytes are supported. 
+            For example:
+                0xa (000A) where 00 is high byte, 0A is low byte
+                A0F (0A0F) where 0A is high byte, 0F is low byte</param>  
+            <param name="program_mode">program mode= true, rom mode= false</param>  
+            <param name="skip_if_device_not_in_rom_mode">if this "read" is for ROM mode and the device is Program mode the task will be skipped</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Read_Word_General(System.Byte,System.String,System.Byte)">
+            <summary>
+            Reads a word (2 bytes) from the device given the address and cmd_byte and compares it to the expected_value.
+            </summary>
+            <remarks>Can be used in Initialization and Normal activities</remarks>
+            <param name="cmd_byte">command byte</param>
+            <param name="expected_hex_value">expected word in hex: High byte first. Supported formats include "0F-DE", "0FDE", "0F DE", "0x0fDE", and 
+            "Fh". Partial bytes are supported. 
+            For example:
+                0xa (000A) where 00 is high byte, 0A is low byte
+                A0F (0A0F) where 0A is high byte, 0F is low byte</param>  
+            <param name="address">Address to send to</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Enable_Custom_Mode(System.String)">
+            <summary>
+            Enables a supported custom mode.
+            </summary>
+            <param name="password">password for custom mode</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Save_Password_For_Program_To_ROM_Mode(System.String)">
+            <summary>
+            This task allows a password to be saved in case any task that needs it can use it to jump from Program mode to ROM mode.  This is used if the 0xF9 bit is set in the bitmask. 
+            If the 0xF9 bit is set in a bitmask and this task is not used then a dialog box will appear asking for the user to enter a password.  If this task is used then the password saved here
+            will be applied and not show a dialog box.  If the bit 0xF9 is not set in the bitmask then this task will not be used.  Example tasks that jump from Program mode to ROM mode are
+            Firmware Update, Send Any Device to ROM.
+            </summary>
+            <param name="Password">Password that is set in the firmware to jump from Program mode to ROM mode</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Confirm_Device(System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            This task displays to the user information about the device that is currently being used.  The user can either confirm
+            this is the correct device or cancel.  The Address of the device will always be shown.  Works only if Parm info/Parm Value is supported and reads just the last 4 bytes of the first block of program flash.
+            </summary>
+            <param name="display_device_id">set to true if you wish to display this information.</param>
+            <param name="display_mfr_id">set to true if you wish to display this information.</param>
+            <param name="display_mfr_model">set to true if you wish to display this information.</param>
+            <param name="display_mfr_revision">set to true if you wish to display this information.</param>
+            <param name="display_mfr_location">set to true if you wish to display this information.</param>
+            <param name="display_PFLASH_checksum">set to true if you wish to display this information.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Store_Default">
+            <summary>
+            Stores the values on the device to the non-voltile memory of the device.
+            </summary>
+            <remarks>Stores to flash.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Device_Reset">
+            <summary>
+            Resets the device via PMBus and waits a default amount of time.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Clear_Faults">
+            <summary>
+            Clears faults on device.
+            </summary>
+            <remarks>Displays status in log before and after call to clear faults on device.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.API_Validate_Writes_With_ReadBacks(TIDP.PMBus.ValidateWrites)">
+            <summary>
+            Generally all writes to the device are checked by reading back the value and
+            comparing the written to the read. If they are different then the script will fail since an error has occured according to readback validation. 
+            Some times it is impossible to write a certain value due to the resolution of the device for values within certain ranges. For this reason
+            validate writes with readbacks is set to false to avoid read back verification and an unintended error.  
+            </summary>
+            <remarks>This is not a pmbus command.  However it is a helper property that checks to see if the value was written exactly as intended.  Only makes sense to be placed in Activities that occur after device validation, such as NORMAL.</remarks>
+            <param name="validate_writes_setting">Set when a parameter should verify value written</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Message_With_Image(System.String,System.String,System.String)">
+            <summary>
+            This task causes a pop-up dialog with image.  This can be used to validate that a board looks like a golden image.  If the user clicks ok then it is considered a pass.
+            If the user clicks cancel then it is considered a fail.
+            </summary>
+            <param name="title">Title for pop-up</param>
+            <param name="message">Main contents of dialog that appears below the picture.</param>
+            <param name="image_location">Location of file.</param>
+            <remarks>Picture is stretched.  If no picture is desired use Message task.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Message(System.String,System.String)">
+            <summary>
+            This task causes a pop-up dialog with a message.  If the user clicks ok then it is considered a pass.
+            If the user clicks cancel then it is considered a fail.
+            </summary>
+            <param name="title">Title for pop-up</param>
+            <param name="message">Main contents of dialog.</param>                
+            <remarks>If a picture is also desired use Message_With_Image task.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Pause(System.Int32)">
+            <summary>
+            This task pauses the process by the number of milliseconds entered.
+            </summary>
+            <remarks>Basically a Thread.Sleep() with logging.</remarks>
+            <param name="pause_time_msec">number of milliseconds to pause for</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Control(TIDP.SAA.LogicLevel)">
+            <summary>
+            This task sets the state of the USB adapter control line to either high or low.
+            </summary>
+            <param name="level">Set level to either high or low.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Operation(System.Int32,System.Byte)">
+            <summary>
+            Writes the operation byte on the specified rail using the OPERATION command.
+            </summary>
+            <param name="rail_number">rail number to apply operation to</param>
+            <param name="operation_byte">Operation byte in hex</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Operation_All_Rails(System.Byte)">
+            <summary>
+            Writes the operation byte to all configured rails using the 
+            OPERATION command, one rail at a time. 
+            </summary>
+            <remarks>
+            See Set_Operation_Page_FF task for a version that sets PAGE=0xFF and then
+            only writes one OPERATION command.
+            </remarks>
+            <param name="operation_byte">Operation byte in hex</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Operation_All_Rails_Via_Page_FF(System.Byte)">
+            <summary>
+            Sets PAGE=0xFF and writes the OPERATION command to set operation byte on 
+            all rails configured on the device. 
+            </summary>
+            <remarks>
+            See Set_Operation_All_Rails
+            for a version that sets OPERATION one rail at a  time.
+            </remarks>
+            <param name="operation_byte">Operation byte in hex</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Vout_Command(System.Int32,System.Double)">
+            <summary>
+            Configures the setpoint on the specified rail using the VOUT_COMMAND 
+            PMBus command.
+            </summary>
+            <param name="rail_number">rail number to adjust</param>
+            <param name="setpoint">Voltage to set</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Vout_Command_All_Rails(System.Double)">
+            <summary>
+            Globally configures the setpoint on all configured rails using the 
+            VOUT_COMMAND PMBus command. VOUT_COMMAND is written for each rail
+            one at a time, setting PAGE as needed to target the appropriate rail.
+            </summary>
+            <remarks>
+            See Set_Vout_Command_Page_FF task for a version that sets PAGE=0xFF and then
+            only writes one VOUT_COMMAND command.
+            </remarks>
+            <param name="setpoint">Voltage to set</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Set_Vout_Command_All_Rails_Via_Page_FF(System.Double)">
+            <summary>
+            Sets PAGE=0xFF and writes the VOUT_COMMAND PMBus command to set 
+            VOUT_COMMAND on all rails configured on the device. This will
+            adjust voltage on all rails near simultaneously.
+            </summary>
+            <remarks>
+            See Set_Vout_Command_All_Rails
+            for a version that sets VOUT_COMMAND one rail at a  time.
+            </remarks>
+            <param name="setpoint">Voltage to set</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Scan_For_Devices">
+            <summary>
+            Scans for devices accross all SAA adapters attached.  This task will pass whether or not a device is found.  The purpose of this task
+            is to mainly provide logging of the devices found.
+            </summary>
+            <remarks></remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Clear_Logged_Faults">
+            <summary>
+            Clears the logged faults on device as opposed to faults.
+            </summary>
+            <remarks></remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Export_Project_File">
+            <summary>
+            Creates a project file export based on the current device. This file will be 
+            written to the logged folder for the run. The name of the file will
+            contain the part ID, the device address, a timestamp, and the MFR_SERIAL value (but only
+            if the device supports this command and it is not an empty string). Example filenames
+            are "TPS40400_Address_28_2010.02.24_18.12.22.972.xml" (no MFR_SERIAL support) and 
+            "UCD90120_Address_101_123456_2010.02.24_18.19.59.806.xml" (MFR_SERIAL is 123456).
+            Normally stored data/session/{specific run} folder of your install location. 
+            You can get to logged session folder via file menu.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Export_Project_File_At_Location(System.String,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Creates a project file based on the current device. The file will be saved to 
+            the folder/filename specified, and will have a .xml extension. You can select whether to
+            automatically include the device's MFR_SERIAL value and/or a timestamp in the 
+            filename.
+            </summary>
+            <param name="create_project_file_in_folder">Specify the folder to write project file too.</param>
+            <param name="project_file_name">The name that you want to call the file saved. DO NOT include
+            a filename extension. It will be add the .xml automatically.</param>
+            <param name="append_time_stamp">Append time stamp to file name.</param>
+            <param name="append_serial">Append MFR_Serial_Number to file name.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Export_To_Text_File(System.String,System.String,System.Boolean,System.Boolean,TIDP.LineOutputFormat)">
+            <summary>
+            Exports the device's configuration and readings to a text file. The file 
+            will be saved to the folder/filename specified, and will have either a .txt or
+            .csv extension, depending on the output_format option. You can select whether to
+            automatically include the device's MFR_SERIAL value and/or a timestamp in the 
+            filename.
+            </summary>
+            <remarks>The serial number will be obtained via PMBus command so may want to use the Serial Number task to set it if nothing is there.</remarks>
+            <param name="create_text_file_in_folder">Specify the folder to write project file too.</param>
+            <param name="text_file_name">The name that you want to call the file saved. DO NOT include
+            a filename extension. It will be added automatically based on output_format.</param>
+            <param name="append_time_stamp">Append time stamp to file name.</param>
+            <param name="append_serial">Append the contents of the MFR_SERIAL command to the file name.
+            This will be ignored if the MFR_SERIAL command is not supported on the device.</param>
+            <param name="output_format">Format for text file.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Recreate_Program_Flash_Checksum(TIDP.PMBus.PMBusDevice.RecreateChecksumMode)">
+            <summary>
+            Either forcibly or optionally recreates the device's program flash (pflash) checksum. The
+            pflash checksum is what is used by the ROM to determine whether a device's program should
+            be executed when the device is reset or powered on. If the checksum calculated by the ROM
+            does not match the checksum stored in flash memory, the device's program will not be 
+            executed and the device will stay in ROM mode. See mode for details about the various modes 
+            that are available. 
+            </summary>
+            <remarks>
+            Always: 
+            Do not inspect the current checksum. Just send the device to ROM mode,
+            calculate the checksum through the ROM, write the new checksum, and then
+            execute the program (firmware). This mode is very fast.
+            
+            **No support for multiflash devices yet.** Please contact if needed.
+            <para/>
+            OnlyIfAppearsToBeInvalid: Inspect the current checksum. If it is 0x00000000, 0xFFFFFFFF, or
+            0xAAAAAAAA, the checksum will be recreated. This is as fast as the Always mode,
+            and even fast if the checksum "appears" to be valid. The benefit of this mode is
+            that the device is not sent to ROM mode if the checksum "appears" to be valid.
+            <para/>
+            OnlyIfCalculatedMismatch: While in program mode, calculates the checksum 
+            for program flash and compares this
+            to the current pflash checksum. Only if the calculated and actual differ will the
+            device be sent to ROM mode. This is slower than OnlyIfAppearsToBeInvalid mode 
+            because the GUI/API must read the entire contents of program flash over I2C/USB before
+            deciding whether the current checksum is valid.
+            </remarks>
+            <param name="mode">
+            Controls the logic used to determine whether to recreate the program flash checksum.
+            See the technical description for details.
+            </param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Get_Serial_Number">
+            <summary>
+            If the device supports MFR_SERIAL, returns Latest, but trimmed of whitespace. Otherwise,
+            returns "".
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Load_Device_Data(TIDP.PMBus.PMBusDevice,System.Boolean,System.Boolean,System.Int32,TIDP.PMBus.ImportExport.ProjectData)">
+            <summary>
+            Load device data to the current device
+            </summary>
+            <param name="current_device"></param>
+            <param name="is_same_partID"></param>
+            <param name="is_same_address"></param>
+            <param name="specified_address"></param>
+            <param name="proj_data"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Validate_Vout_Device_Reading(System.Int32,System.Double)">
+            <summary>
+            Verify READ_VOUT on each output rail is within +-percent_pass% of VOUT_COMMAND on the specified rail.
+            See Validate_Vout_Device_Reading_Any for a version that lets you specify an arbitrary expected 
+            voltage instead of using VOUT_COMMAND setting.
+            </summary>
+            <param name="rail_num">Rail number</param>
+            <param name="percent_pass">The allowed percentage variation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Validate_Vout_Device_Reading_Any(System.Int32,System.Double,System.Double)">
+            <summary>
+            Verify READ_VOUT on each output rail is within +-percent_pass% of a voltage reading you
+            enter. See Validate_Vout_Device_Reading task for a version that automatically determines
+            the expected voltage based on the VOUT_COMMAND setting for the rail.
+            </summary>
+            <param name="rail_num">Rail number</param>
+            <param name="expected_read_vout_V">The expected voltage reading. =</param>
+            <param name="percent_pass">The allowed percentage variation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Verify_Within_Tolerance_Pct(System.Double,System.Double,System.Double,System.Double,System.String,System.String@)">
+            <summary>
+            returns true if passes.  throws exception if percentage greater than percent pass. 
+            </summary>
+            <param name="actual_value"></param>
+            <param name="expected_value"></param>
+            <param name="percent_pass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Verify_Within_Tolerance_Pct(System.Double,System.Double,System.Double)">
+            <summary>
+            returns true if passes.  throws exception if percentage greater than percent pass. 
+            </summary>
+            <param name="actual_value"></param>
+            <param name="expected_value"></param>
+            <param name="percent_pass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Verify_Within_Tolerance(System.Double,System.Double,System.Double,System.String,System.String@)">
+            <summary>
+            returns true if passes.  throws exception if percentage greater than allowed variation. 
+            </summary>
+            <param name="actual_value"></param>
+            <param name="expected_value"></param>
+            <param name="percent_pass"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Verify_Within_Tolerance(System.Double,System.Double,System.Double,System.Double,System.String,System.String@)">
+            <summary>
+            returns true if pass
+            </summary>
+            <param name="actual_value"></param>
+            <param name="expected_value"></param>
+            <param name="uppper_allowed_variation">positive value, used to compare the upper bound when actual value is greater than expected value</param>
+            <param name="lower_allowed_variation">positive value, used to compare the lower bound when actual value is smaller than expected value</param>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Validate_Vout_Device_All_Rails(System.Double)">
+            <summary>
+            Verify READ_VOUT on each output rail is within +-percent_pass% of VOUT_COMMAND on all configured rails.
+            </summary>
+            <param name="percent_pass">The allowed percentage variation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Validate_Iout_Device_Reading(System.Int32,System.Double,System.Double)">
+            <summary>
+            Verify READ_IOUT (8Ch) on rail is within +-current_variation A of a specified current.
+            </summary>
+            <param name="rail_num">Rail number</param>
+            <param name="expected_iout_A">The current that READ_IOUT will be compared to.</param>
+            <param name="current_variation_A">The allowed current variation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Validate_Iout_Device_Reading_Any(System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double)">
+            <summary>
+            Verify READ_IOUT (8Ch) on rail is within the upper(+) and the lower (-) current variation of a specified current.
+            Data is read a number of times, specified by number_of_samples, then data is averaged and used to compare with the expected current (expected_iout_A)
+            Test pass if average_read_iout is greater than or equal (expected_iout_A - lower_current_variation_A) and less than or equal (expected_iout_A + upper_current_variation_A)
+            
+            For example,  if expected_iout_A = 1A; upper_current_variation_A = 0.1A; lower_current_variation_A = 0.2A;
+            test will pass if the average read current is greater than or equal 0.8A and less than or equal 1.1A
+            </summary>
+            <param name="rail_num">Rail Number (from 1 to max number of rails)</param>
+            <param name="number_of_samples">Number of samples. </param>
+            <param name="sample_interval_ms">Time interval between each read in milliseconds. Minimum 1 ms</param>
+            <param name="expected_iout_A">Expected current in A</param>
+            <param name="upper_allowed_percent_variation">The allow percentage current (%) if read current is greater than the expected current.</param>
+            <param name="lower_allowed_percent_variation">The allow percentage current (%) if read current is less than the expected current.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Validate_Iout_Device_Reading_All_Rails(System.Double,System.Double)">
+            <summary>
+            Verify READ_IOUT (8Ch) on the all output rails are within +-current_variation A of a specified current.
+            </summary>
+            <param name="expected_iout_A">The current that READ_IOUT will be compared to.</param>
+            <param name="current_variation_A">The allowed current variation.</param>
+            <returns></returns>
+            
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.Manufacturing.Send_ENABLE_ROM_Command(System.Int32,System.Int32)">
+            <summary>
+            A very simple task that will issue the ENABLE_ROM command to the specified address 
+            the specified number of times. No other scanning, etc is done. Passes if the device ACKs
+            (and returns immediately). Fails if all ENABLE_ROM command executions NACK.
+            </summary>
+            <param name="pmbus_address">
+            The PMBus address to send the ENABLE_ROM command to.
+            </param>
+            <param name="max_num_attempts">Maximum number of times to issue the ENABLE_ROM command. 
+            Returns PASS when 
+            we get an ACK.</param>
+            <returns></returns>
+        </member>
+        <member name="P:TIDP.Factory.TaskLibrary.Manufacturing.Current_Factory_Device">
+            <summary>
+            reference to Plugin.Device
+            </summary>
+        </member>
+        <member name="T:TIDP.Factory.TaskLibrary.Manufacturing.ConfigProjectDevice">
+            <summary>
+            enum to set which device to use in a project file.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9111.Calibrate_Vout91XX(System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            This will calibrate vout for the 91XX device.
+            </summary>
+            <param name="Vout_Setting_V">what you want the nominal voltage to be afterwards.</param>
+            <param name="Trim_Range_Percent">The range for the trim that if it is outside of this range it will quit.</param>
+            <param name="Scale_Range_Percent"></param>
+            <param name="Trim_Tolerance_Percent"></param>
+            <param name="Scale_Tolerance_Percent"></param>
+            <returns></returns>
+        </member>
+        <member name="F:TIDP.Factory.TaskLibrary.UCD9111.Tests_Passed">
+            <summary>
+            Calibrates Iout for 91XX devices.  Note the calibrate Iout for the 92XX can also calibrate this and has added instrumentation support.
+            This task is obsololete.
+            </summary>
+            <param name="Expected_Vout_Value_V"></param>
+            <param name="Vout_Percent_Tolerance"></param>
+            <param name="Load_Current_Ref_1_A"></param>
+            <param name="Load_Current_Ref_2_A"></param>
+            <param name="Offset_Range_A"></param>
+            <param name="Offset_Tolerance_A"></param>
+            <param name="Gain_Range_Percentage"></param>
+            <param name="Gain_Tolerance_A"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9111.UCD9111_Tests">
+            <summary>
+            Contains 7 tests directly related to the UCD9111 device.  Will not apply to any other device.  Tests are all manual.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9111.test_no1(System.String)">
+            <summary>
+            output ripple test.
+            </summary>
+            <param name="file_path"></param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9111.UCD9111_Test_Case_Check_Limits(System.Int32,System.String,System.String,System.Collections.Generic.List{System.String},System.Double,System.Double,System.String)">
+            <summary>
+            given test description and limits can do some basic testing by asking the user for a value and checking if it is within limits
+            if outside then allows the user to rety one more time.  TODO is to remove this to a function level. Was a helper for UCD9111 testcases.
+            </summary>
+            <param name="test_no"></param>
+            <param name="test_name"></param>
+            <param name="test_condition"></param>
+            <param name="test_instructions"></param>
+            <param name="lower_limit"></param>
+            <param name="upper_limit"></param>
+            <param name="unit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9111.test_log_format(System.Int32,System.String,System.Collections.Generic.List{System.String},System.Double,System.Double,System.Object,System.String,System.Boolean)">
+            <summary>
+            This funtion will also add to Plugin.test_case_failed list the tests that have failed.
+            main purpose is so that it shows up nicely in the test results page.
+            </summary>
+            <param name="test_no"></param>
+            <param name="test_name"></param>
+            <param name="test_condition"></param>
+            <param name="lower_limit"></param>
+            <param name="upper_limit"></param>
+            <param name="value"></param>
+            <param name="unit"></param>
+            <param name="passed"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9111.UCD9111_Bullet_List_For_List_Of_Strings(System.Collections.Generic.List{System.String},System.Boolean)">
+            <summary>
+            give a list with strings it will prefix each string with a number based on its (index+1) and return it as a big string
+            currently used to create the manual test instructions.  Was a helper for UCD9111 testcases.
+            </summary>
+            <param name="list"></param>
+            <param name="show_title"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TIDP.Factory.TaskLibrary.UCD9111.Current_Factory_Device">
+            <summary>
+            nice way to get the device.
+            </summary>
+        </member>
+        <member name="T:TIDP.Factory.TaskLibrary.UCD9240">
+             <summary>
+             power supply setup current limit:  30A configurable input. 10 volts input voltage.
+            calibration best to do it at full ranges so 10 and 90%.
+            1. firmware step needed to make sure version is there
+            
+            2. project file - this task exists.
+            
+             
+            3. set serial number
+            
+            4. Calibrate Vin - need to discuss later a bit different may need to 2 points for slope and offset.
+            vin sensing parameters. 2 different input voltages to get slope and offset. compare sensed voltages to setpoint. 
+            Can use the sensors for voltage and current.
+            
+             
+            4.1 Calibrate Iin
+            gain and offset. 2 different current inputs or may just want to do offset. so may need to use the load.  like a heavy load on one page.
+            then without the load. now get 2 points do slope and offset.
+            
+            5. Temperature.... if reading from part then it doesn't matter if it is cold or not but if it is 
+            from the power stage then it matters when you do it. so we do it first since this is what we are concerned with.
+            
+            6. vout voltage calibration 4 pages take a set of inputs.. 3 points:low cal, high cal and final set point
+            final set point means the value you want to set it at after the calibration.
+             May want to consider a task that calibratge_vout(page,min,max,setpoint,tolerance,range)
+             whenever you start task make sure page is configured...  calibrates sensor(read_vout) and measured voltage.
+            7. iout calibration possible configuration 2 phase,2phase, 1 phase ,1 phase... many different combinations. 6 phases for this UCD9240 64pin.
+            when calibrating phase do one at a time and disable neighbors and do one at a time... Keep original state so you can restore it.
+             don't worry about other pages.
+             set phase number to one you want to test.
+             giong to calibrate iout_cal_gain and iout_cal_offset
+             can assume tolerance and range per parameter like before.
+             save fault reponse and then change it to continue without interruption
+             turn on output for that rail corresponding to that page.
+             Load on command to chroma is telling it to go on if voltage is enough.
+             in matlab the set the setpoints 2 times so need to only do it once so ignore the first one however the first sends
+            the rise time and fall time.
+            
+            operate at low setpoint and 12 measurements for current and then 12 pmbus(sensed) current.
+            calculate offset. write offset and verify it is written.
+            
+            since changed offset now resense 12 times. don't need to remeasure assume samething.
+            *****************start for loop*****/  Do 2 iterations as opposed to 3.
+            operate at high setpoint and 1 measuremments for current and 12 sensed.
+            
+            calculate gain. and write gain. looks like vout scale loop.
+            
+            go back to low setpoint and take 1 measurements and 12 sensed current.
+            dont' really need to do the 12 measurements just doing 1 for sanity.  May wnat to use orginal average and following
+            ones for sanity.
+            
+            recalculate offset and change it. sensed - measured and subtract from current iout_cal_offset.
+            ***************** end loop***************/
+            confirmation test for channel. for "voyager 6" will need 6 of these tasks.  
+            1. re sense setpionts 1 and 2 and compare to measurements for confirmation. Optional based on using
+             tolerances and ranges if that is there may not need to do this.
+            
+            clean up
+            turn off page
+            turn off load
+            restore phase enable for that page.
+            restore overcurrent fault response for page.
+            
+            store default all
+            create project file.
+            
+            overall tests.
+            load test for each page.
+            load at highest current with all phases per page enabled.
+            #test1
+            one page at a time.
+            measure current and voltage and compared to sensed current and voltage.  look for faults and warnings in pmbus.
+            some limits to indicate whether the values are good.
+            again for voltage compare measurement and sensed to setpoint since both should be accurate relative to this poinnt. Remember we calibrated 4 values for voltage.
+            same for current compare to setpoint.  Assume chroma goes to your setpoint.
+            
+            #test2
+            all pages user enters current for each page.
+            so turn load on and configure them and then turn on all pages at once.  set page number to 255 and turn on to nominal voltage.
+            check status faults for each page status word and it is all 0's then it is all good. if not then dig down to find the error.
+            
+            clear faults and clear logged faults and clear logged peaks
+            
+            1. copy of ucd9240 document.
+            2. copy of pmbus spec 2nd part. command lang ref... 1.1
+            
+            3. execution script.
+            
+            4. get board.
+            
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9240.UCD9240_Test_All_Rails_DCLOAD(System.Double,System.Double,System.Double,System.Double,System.Int32)">
+             <summary>
+             Issues a series of PMBus commands to test turning all
+             pages on and running them for a specified time at a specified load.
+             NOTE: MAKE SURE ALL RAILS CAN RUN AT THE SPECIFIED LOAD!  This means
+             that the currents specified should be acceptable rail currents. 
+             Also If one of the loads is zero than all shall be treated as 0(No loads).
+             Also less than 0.5 amps on a rail is also not acceptable.
+             For UCD9240 EVM MAX_CURRENT for rail 1=50,rail 2=50,rail 3=10, rail 4= 10.
+             </summary>
+            
+             <param name="rail1_current_A">Iout value for rail 1.</param>
+             <param name="rail2_current_A">Iout value for rail 2.</param>
+             <param name="rail3_current_A">Iout value for rail 3.</param>
+             <param name="rail4_current_A">Iout value for rail 4.</param>
+             <param name="duration_of_test_ms">Amount of time to keep the load on that rail.</param>
+             <remarks>Purely instrumented task.
+             For UCD9240 EVM MAX_CURRENT current rail 1=50,rail 2=50,rail 3=10, rail 4= 10</remarks>
+             <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9240.UCD9240_Test_Rail_DCLOAD(System.Int32,System.Double,System.Int32,System.Int32,System.Boolean,System.Double)">
+            <summary>
+            Test a specific rail with the specified current. testing on ucd9240.
+            For UCD9240 EVM MAX_CURRENT current rail 1=50,rail 2=50,rail 3=10, rail 4= 10
+            </summary>
+            <param name="rail_num">Rail number to test.</param>
+            <param name="current_A">Do not exceed max current for this rail.</param>
+            <param name="num_of_pmbus_reads">The number of PMBus reads that will be averaged to represent the Iout
+            PMBus reading.</param>
+            <param name="num_of_meter_reads">The number of meter reads that will be averaged to represent the Current
+            meter reading.</param>
+            <param name="instrumented">Specifying whether an instrumented load is present.</param>
+            <param name="percent_pass">
+            The percentage to decide whether the percent difference between the actual
+            temperature meter(theremometer) reading and the temperature PMBus reading is small
+            enough to pass.
+            </param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9240.Validate_Temp_2_Device_Reading_All_Rails(System.Double,System.Double)">
+            <summary>
+            Verify READ_TEMPERATURE_2 (8Eh) on all rails are within temperature variation of a specified temperature.
+            </summary>
+            <param name="expected_temp_C">The temperature that READ_TEMPERATURE_2 return will be compared to, in Celcius (°C)</param>
+            <param name="temp_variation_C">The allowed temperature variation in Celcius (°C).</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9240.Validate_Temp_2_Device_Reading(System.Int32,System.Double,System.Double)">
+            <summary>
+            Verify READ_TEMPERATURE_2 (8Eh) on the specified output rail is within temperature variation of a specified temperature.
+            </summary>
+            <param name="rail_num">Rail number</param>
+            <param name="expected_temp_C">The temperature that READ_TEMPERATURE_2 return will be compared to, in Celcius (°C)</param>
+            <param name="temp_variation_C">The allowed temperature variation in Celcius (°C).</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9240.Validate_Temp_2_Device_Reading_Any(System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double)">
+            <summary>
+            Verify READ_TEMPERATURE_2 (8Eh) on rail is within the upper(+) and the lower (-) temperature variation of a specified temperature.
+            Data is read a number of times, specified by number_of_samples, then data is averaged and used to compare with the expected temperature (expected_temp_C).
+            Test pass if average_read_temperature is greater than or equal (expected_temp_C - lower_temp_variation_C) and less than or equal (expected_temp_C + upper_temp_variation_C)
+            
+            For example,  if expected_temp_C = 75°C; upper_temp_variation_C =5°C; lower_temp_variation_C = 8°C;
+            test will pass if the average read temperature is greater than or equal 67°C and less than or equal 80°C
+            </summary>
+            <param name="rail_num">Rail Number (from 1 to max number of rails)</param>
+            <param name="number_of_samples">Number of samples. </param>
+            <param name="sample_interval_ms">Time interval between each read in milliseconds. Minimum 1 ms</param>
+            <param name="expected_temp_C">Expected temperature in Celcius (°C)</param>
+            <param name="upper_allowed_percent_variation">The allow percentage temperature variation (%) if read temperature is greater than the expected temperature.</param>
+            <param name="lower_allowed_percent_variation">The allow percentage temperature variation (%) if read temperature is less than the expected temperature.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9240.Validate_Fan_Speed_Device_Reading(System.Int32,System.Double,System.Int32,System.Double,System.Double)">
+            <summary>
+            Verify fan by setting speed via FAN_COMMAND_n, pausing, and verify READ_FAN_SPEED_n is within +-percent_pass% of a desired RPM value
+            </summary>
+            <param name="fan_num">Fan number</param>
+            <param name="fan_command_speed_percent">Speed percent that fan is set to.</param>
+            <param name="delay_before_reading_ms">Delay before taking the fan speed reading.</param>
+            <param name="expected_fan_speed_rpm">Speed that fan is expected to be at.</param>
+            <param name="percent_pass">The allowed percentage variation.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Task_Instrumentation_Settings.GPIB_CrLoad_PowerSupply_Config(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            This task needs to be executed in the initialization before any PMBus as it will
+            initialize the instruments that will be used to interact with the PMBus device.
+            </summary>
+            <param name="Board_Address">This is the GPIB controller address it is usually 0. 
+            It is assumed that the other devices listed are on this "board".</param>
+            <param name="DC_Load_Address">The GPIB address of the DC_Load.</param>
+            <param name="Power_Supply_Address">The GPIB address of the power supply.</param>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Task_Instrumentation_Settings.Shutdown_Instrumentation">
+            <summary>
+            Shuts down the instrumented equipment. Being a shutdown task this indicated that
+            it should be put in an <strong>Activity</strong> with type <strong>SHUTDOWN.</strong>
+            This way it will always be executed at the end. One way to think of this is if you had
+            your power supply set to a high voltage you would always want it to return to a safe
+            value if the script completes or fails in between.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Task_Instrumentation_Settings.GPIB_Board_Config(System.Int32)">
+            <summary>
+            Initializes the instrumented GPIB controller. NI488.2 supported. No guarantee
+            that another controller may work. This task just initializes the board. Other
+            instruments used will need to be initialized separately. If you would like to
+            initialize Load and Power supply then use
+            <strong>GPIB_CrLoad_PowerSupply_Config</strong>.
+            </summary>
+            <remarks>Only needed for instrumentation.</remarks>
+            <param name="Board_Address">Enter the controller board address.  It is usually 0.</param>        
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Task_Instrumentation_Settings.GPIB_CrLoad_Config(System.Int32,System.Int32)">
+            <summary>
+            Initializes the GPIB Load. Required for instrumented calibration of
+            current(Iout). If you have an instrumented power supply then configure both the load
+            and power supply using
+            <strong>GPIB_CrLoad_PowerSupply_Config.</strong>
+            </summary>
+            <param name="Board_Address">This is the GPIB controller address. It is usally 0.</param>
+            <param name="DC_Load_Address">
+            The GPIB address of the DC_Load. Normally shows up when you restart the load or
+            can be seen using tools such as NI MAX.
+            </param>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Task_Instrumentation_Settings.GPIB_PowerSupply_Config(System.Int32,System.Int32)">
+            <summary>Initializes the GPIB Power Supply.</summary>
+            <param name="Board_Address">The GPIB Controller address usually 0.</param>
+            <param name="Power_Supply_Address">The GPIB address of the power supply.</param>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Task_Instrumentation_Settings.GPIB_Multimeter_Config(System.Int32,System.Int32)">
+            <summary>
+            Initializes the multimeter - range and resolution are 10, .00001
+            </summary>
+            <param name="Board_Address">The GPIB Controller address usually 0.</param>
+            <param name="Multimeter_Address">GPIB primary address of Multimeter</param>
+            <returns></returns>
+        </member>
+        <member name="T:TIDP.Factory.TaskLibrary.TDKManufacturing">
+            <summary>
+            custom library for TDK.
+            I pulled out the below task to create a library for TDK, just keeping it here for source control.
+            Needs a better place for this.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.TDKManufacturing.Set_Serial_Number2(System.Boolean,System.Int32)">
+            <summary>
+            Sets serial number, which can be a combination of letters and numbers.  This will be set in the logging and reporting.  Does not set the MFR_SERIAL PMBus command.  For the PMBus command use task Set_Serial_Number.
+            </summary>
+            <param name="length">number of characters in serial number</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.TDKManufacturing.Dual_SAA_Adapter(System.String,System.String)">
+            <summary>
+            Download firmware to two different SAAs.
+            </summary>
+            <param name="File_Name">Firmware for control low</param>
+            <param name="File_Name2">Firmware for control high</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.TDKManufacturing.Security_Disable(System.Boolean,System.String)">
+            <summary>
+            When security has been enabled, disable security by writing the password to the this command.
+            If security has not been enabled or has been disabled, do nothing
+            </summary>
+            <param name="write_disable_security_password">if true, first disabling security by writing the security_password to this command, and then set the password to [0xFF FF FF FF FF FF].
+            Users should issue the STORE_DEFAULT_ALL command followed this command to permanently disabling security</param>
+            <param name="security_password">Security password string: 6 characters length. Password string needed if security has been enabled, and users want to disable security</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.TDKManufacturing.Security_Enable(System.String)">
+            <summary>
+            When security has not yet been enabled or has been disabled, writing the this command sets the new passsword and enable security
+            When security is already enable, do nothing
+            </summary>
+            <param name="security_password">Security password string: 6 characters length</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.TDKManufacturing.Security_Change_Password(System.String,System.String)">
+            <summary>
+            If Security is currently disabled, enable security with the new_security_password. The current_security_password is not used
+            If Security is currently enabled, change the security password from current_security_password to new_security_password.
+            </summary>
+            <param name="new_security_password">New security password string: 6 characters length</param>
+            <param name="current_security_password">Current security password string: 6 characters length</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.TDKManufacturing.Security_Bit_Mask(System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            This read/write block command controls which PMBus commands are password-protected to prevent unauthorized modification.
+            The data for this command is a 32 byte binary string. Each bit in the string corresponds to one of the 256 possible PMBus command codes
+            When a bit is set to 1, the corresponding PMBus command is write-protected if security is on
+            When a bit is set to 0, the corresponding PMBus command is not write-protected even if security is on.
+            For PMBus commands that do not support any write, the corresponding mask bit is ignored by firmware.
+            
+            Security has to be disabled in order to modify the security bit mask. 
+            </summary>
+            <param name="byte_0">byte 0: where bit 7 corresponds to command code 0x00 and bit 0 corresponds to command code 0x07</param>
+            <param name="byte_1">byte 1: where bit 7 corresponds to command code 0x08 and bit 0 corresponds to command code 0x0F</param>
+            <param name="byte_2">byte 2: where bit 7 corresponds to command code 0x10 and bit 0 corresponds to command code 0x17</param>
+            <param name="byte_3">byte 3: where bit 7 corresponds to command code 0x18 and bit 0 corresponds to command code 0x1F</param>
+            <param name="byte_4">byte 4: where bit 7 corresponds to command code 0x20 and bit 0 corresponds to command code 0x27</param>
+            <param name="byte_5">byte 5: where bit 7 corresponds to command code 0x28 and bit 0 corresponds to command code 0x2F</param>
+            <param name="byte_6">byte 6: where bit 7 corresponds to command code 0x30 and bit 0 corresponds to command code 0x37</param>
+            <param name="byte_7">byte 7: where bit 7 corresponds to command code 0x38 and bit 0 corresponds to command code 0x3F</param>
+            <param name="byte_8">byte 8: where bit 7 corresponds to command code 0x40 and bit 0 corresponds to command code 0x47</param>
+            <param name="byte_9">byte 9: where bit 7 corresponds to command code 0x48 and bit 0 corresponds to command code 0x4F</param>
+            <param name="byte_10">byte 10: where bit 7 corresponds to command code 0x50 and bit 0 corresponds to command code 0x57</param>
+            <param name="byte_11">byte 11: where bit 7 corresponds to command code 0x58 and bit 0 corresponds to command code 0x5F</param>
+            <param name="byte_12">byte 12: where bit 7 corresponds to command code 0x60 and bit 0 corresponds to command code 0x67</param>
+            <param name="byte_13">byte 13: where bit 7 corresponds to command code 0x68 and bit 0 corresponds to command code 0x6F</param>
+            <param name="byte_14">byte 14: where bit 7 corresponds to command code 0x70 and bit 0 corresponds to command code 0x77</param>
+            <param name="byte_15">byte 15: where bit 7 corresponds to command code 0x78 and bit 0 corresponds to command code 0x7F</param>
+            <param name="byte_16">byte 16: where bit 7 corresponds to command code 0x80 and bit 0 corresponds to command code 0x87</param>
+            <param name="byte_17">byte 17: where bit 7 corresponds to command code 0x88 and bit 0 corresponds to command code 0x8F</param>
+            <param name="byte_18">byte 18: where bit 7 corresponds to command code 0x90 and bit 0 corresponds to command code 0x97</param>
+            <param name="byte_19">byte 19: where bit 7 corresponds to command code 0x98 and bit 0 corresponds to command code 0x9F</param>
+            <param name="byte_20">byte 20: where bit 7 corresponds to command code 0xA0 and bit 0 corresponds to command code 0xA7</param>
+            <param name="byte_21">byte 21: where bit 7 corresponds to command code 0xA8 and bit 0 corresponds to command code 0xAF</param>
+            <param name="byte_22">byte 22: where bit 7 corresponds to command code 0xB0 and bit 0 corresponds to command code 0xB7</param>
+            <param name="byte_23">byte 23: where bit 7 corresponds to command code 0xB8 and bit 0 corresponds to command code 0xBF</param>
+            <param name="byte_24">byte 24: where bit 7 corresponds to command code 0xC0 and bit 0 corresponds to command code 0xC7</param>
+            <param name="byte_25">byte 25: where bit 7 corresponds to command code 0xC8 and bit 0 corresponds to command code 0xCF</param>
+            <param name="byte_26">byte 26: where bit 7 corresponds to command code 0xD0 and bit 0 corresponds to command code 0xD7</param>
+            <param name="byte_27">byte 27: where bit 7 corresponds to command code 0xD8 and bit 0 corresponds to command code 0xDF</param>
+            <param name="byte_28">byte 28: where bit 7 corresponds to command code 0xE0 and bit 0 corresponds to command code 0xE7</param>
+            <param name="byte_29">byte 29: where bit 7 corresponds to command code 0xE8 and bit 0 corresponds to command code 0xEF</param>
+            <param name="byte_30">byte 30: where bit 7 corresponds to command code 0xF0 and bit 0 corresponds to command code 0xF7</param>
+            <param name="byte_31">byte 31: where bit 7 corresponds to command code 0xF8 and bit 0 corresponds to command code 0xFF</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.TDKManufacturing.Import_System_File(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Import configurations to devices from a system file (.tifsp).
+            All devices in the system file have to be present in the PMBus in order to proceed
+            </summary>
+            <param name="system_file">The system file, generated using Fusion Digital Power Studio</param>
+            <param name="store_to_flash">If set, store the import configuration to flash when done</param>
+            <param name="force_write_of_all">If set, force to write all the parameters even though they are the same as the one stored in the system file</param>
+            <returns></returns>
+        </member>
+        <member name="F:TIDP.Factory.TaskLibrary.UCD9XXX.SLEEP_TIME_OFF">
+            <summary>
+            This time is a good time to allow after a stop conversion 
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.TaskLibrary.UCD9XXX.SLEEP_TIME_ON">
+            <summary>
+            This time is a good time to allow after a start conversion.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.#cctor">
+            <summary>
+            This class serves as the implementation class for all tasks.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Clear_Faults(TIDP.PMBus.PMBusDevice)">
+            <summary>Clears faults and logged faults.</summary>        
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD91XX_Calibrate_Vout(TIDP.PMBus.PMBusDevice,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            
+            </summary>
+            <param name="device"></param>
+            <param name="vout_set_point"></param>
+            <param name="trim_range"></param>
+            <param name="scale_range"></param>
+            <param name="trim_tolerance"></param>
+            <param name="scale_tolerance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_start_conversion(TIDP.PMBus.PMBusDevice,System.Int32,System.Int32)">
+            <summary>
+            starts conversion on specific page. leaves all other pages as are.
+            will sleep sleep_time_msec to give the rail time to ramp up.
+            </summary>
+            <param name="page_index">0xFF will start conversion on all rails.</param>        
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_start_conversion(TIDP.PMBus.PMBusDevice,System.Int32)">
+            <summary>
+            starts conversion on specific page. leaves all other pages as are.
+            will sleep SLEEP_TIME_ON to give the rail time to ramp up.
+            </summary>
+            <param name="page_index">0xFF will start conversion on all rails.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Configuration_and_Validate(TIDP.PMBus.PMBusDevice,System.String,System.Boolean,System.Boolean,System.Boolean,System.Int32,System.Boolean,TIDP.PMBus.ImportExport.ProjectDataParameterImport.WriteReadBackMode)">
+            <summary>
+            This function Configure_Device will configure the current_device based on the
+            information in the project_file. This configuration will be optionally flashed to the
+            device.
+            </summary>
+            <param name="current_device">PMBus device object that is currently connected</param>
+            <param name="store_to_device">basically flash to device the parameters</param>
+            <param name="is_same_address">if you want the device configuration in the project file at a specific address if address entered =-1 then the first device with the same part id will be found. You don't need to enter an address if you said you want the same address as device as it will be ignored.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Temp_All_Rails(System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32,System.Double,System.Double,System.Boolean)">
+            <summary>
+             Calibrates temperature for all phases and rails on the ucd9240 device.  
+             Readings will be obtained from the pmbus sensors and external meters. 
+            </summary>
+            <remarks>
+            	<para>Requires <strong>SCPI Driver</strong> and the initialization
+                task for a thermometer if instrumented. Also there are 2 temperature readings:</para>
+            	<para>  1.READ_TEMPERATURE_1 - we are <strong>NOT</strong> calibrating this one.</para>
+            	<para>  2. READ_TEMPERATURE_2 which is the one on the power stage. We <strong>are</strong> calibrating this.</para>
+            	<para>  read_temperature_3 isn't used.</para>
+            	<para>NOTE INSTRUMENTED TEMPERATURE ISN'T CURRENTLY SUPPORTED WILL JUST RETURN 25 CELCIUS IF USED.</para>
+            </remarks>
+            <param name="num_of_pmbus_reads">
+            The number of PMBus reads that will be averaged to represent the temperature
+            PMBus reading.
+            </param>
+            <param name="num_of_meter_reads">
+            The number of measured(external device) reads that will be averaged to represent
+            the measured temperature reading.
+            </param>
+            <param name="wait_after_page_calibration_ms">
+            After certain parameters are calibrated it may be needed to wait a certain amount
+            of time so that the new temperature values read via PMBus reflect the update.
+            </param>
+            <param name="Instrumented">
+            Whether there is instrumented equipment present that will supply temperature
+            readings. See task dependencies.  Note! currently supported.  If set to true will always return 25 degrees celcius.
+            </param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="percent_pass">
+            The percentage to decide whether the percent difference between the actual
+            temperature meter(theremometer) reading and the temperature PMBus reading is small
+            enough to pass.
+            </param>
+            <param name="percent_quit">
+            During the iterations of the calibration if the percent difference between
+            temperature meter and pmbus is greater it will quit immediately.
+            </param>
+            <param name="highest_accuracy_in_max_tries">
+            If true will complete the max_calibration_tries else will check with percent_pass
+            each iteration.
+            </param>
+            <old_name>UCD92XX_Calibrate_Temp</old_name>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Temp_Rail(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32,System.Boolean,System.Double,System.Double)">
+            <summary>
+             Calibrates temperature for all phases on the specified rail. Readings will be
+             obtained from the pmbus sensors and external meters.
+             </summary>
+            <remarks>
+            	<para><font color="black" size="2">For temperature calibration it should be noted
+                that what is calibrated is <strong>READ_TEMPERATURE_2.</strong></font></para>
+            	<ol>
+            		<li>The external meter temperature is obtained. Only one is required per
+                    rail.</li>
+            		<li>For each phase the pmbus temperature is read and compared to the external
+                    one.</li>
+            		<li>
+                        Depending on the difference, it may either:
+                        <ol type="i">
+            				<li>Quit - Quit and fail if difference is too great. Usually occurs if
+                            something went wrong.</li>
+            				<li>Calibrate - if the difference is significant enough to warrant a
+                            calibration.</li>
+            				<li>Pass without calibrating if the difference is insignificant.</li>
+            			</ol>
+            		</li>
+            		<li>
+                        The calibration formula is as follows:
+                        <ol type="a">
+            				<li>temperature_correction = avg_reading - meter_temperature</li>
+            				<li>new_temperature_cal_offset = temperature_cal_offset_original -
+                            temperature_correction</li>
+            			</ol>
+            		</li>
+            	</ol>
+            </remarks>
+            <param name="rail_num">The rail number that is to be calibrated.</param>
+            <param name="num_of_pmbus_reads">The number of PMBus reads that will be averaged to represent the temperature PMBus reading.</param>
+            <param name="num_of_meter_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single temperature reading.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="Wait_After_write_ms">
+               /// After certain parameters are calibrated it may be needed to wait a certain amount
+             of time so that the new temperature values read via PMBus reflect the update.
+             </param>
+            <param name="Instrumented">
+             Whether there is instrumented equipment present that will supply temperature
+             readings. See task dependencies. Not currently working.  If set to true will always return measurements of 25 celcius.
+             </param>
+            <param name="percent_quit">
+             During the iterations of the calibration if the percent difference between
+             temperature meter and pmbus is greater it will quit immediately.
+             </param>
+            <param name="percent_pass">
+             The percentage to decide whether the percent difference between the actual
+             temperature meter(theremometer) reading and the temperature PMBus reading is small
+             enough to pass.
+             </param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Vout_All_Rails(System.Double,System.Double,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Calibrates the all the rail on the device to the Vout_Command for each rail.  It will use the margin high and margin low as 2 setpoints per rail.  Margin High as setpoint 1 and Margin Low as setpoint 2.
+            Automatically figures out how many rails there are from the Phase_Info command.
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Starts by turning off all the rails (in order to avoid drawing too
+                    much current and triggering faults).  Unless "turn_other_rails_off_during_calibration" is set to false.</li>
+            		<li>Turns on the rail as specified.</li>
+            		<li>Prepares for different setpoints by changing the fault and warn limits for
+                    UV and OV to accommodate the max(setpoint 1,setpoint 2,nominal) and
+                    min(setpoint1,setpoint2,nominal) voltages as the calibration routine will be changing
+                    Vout to those values. The original settings are restored at the end.</li>
+            		<li>
+                        Calibrates voltage ouput parameters and voltage sensing parameters. That is, voltage output(meter):
+                        vout_scale_loop, vout_cal_offset as well as voltage
+                        sensed(pmbus):vout_scale_monitor,vout_cal_monitor. All 4 are calibrated.
+                        <ol type="i">
+            				<li>Sets output voltage= setpoint 1, pauses for 0.3 seconds and clears
+                            faults.</li>
+            				<li>Reads sensed and measured voltages. </li>
+            				<li>Sets output voltage= setpoint 2, pauses for 0.3 seconds and clears
+                            faults.</li>
+            				<li>Reads sensed and measured voltages.</li>
+            				<li>Calculates slope for vout_scale_loop: slope = (volts_measured2 -
+                                volts_measured1)/(setpoint2 - setpoint1).</li>
+                            <li>Read original vout_scale_loop on the device.</li>
+            				<li>Calculates new vout_scale_loop: new_vout_scale_loop = original_vout_scale_loop / slope.</li>
+            				<li>Writes value to device.</li>
+            				<li>Calculates slope for vout_scale_monitor: slope = (volts_read2 -
+                                volts_read1)/(volts_measured2 - volts_measured1)</li>
+                            <li>Read original vout_scale_monitor on the device.</li>
+            				<li>Calculates new vout_scale_monitor: new_vout_scale_monitor = original_vout_scale_monitor * slope</li>
+            				<li>Writes value to device.</li>
+            				<li>Sets output voltage = nominal voltage, pauses for 0.3 seconds and
+                            clears faults.</li>
+            				<li>Reads sensed and measured voltages.</li>
+            				<li>Calculates a new value for vout_cal_offset: new_vout_cal_offset =
+                            vout_cal_offset_original - (average_vout_measured - nominal_V)</li>
+            				<li>Writes value to device.</li>
+            				<li>Calculates a new value for vout_cal_monitor: new_vout_cal_monitor =
+                            vout_cal_monitor_original - (average_vout_sensed -
+                            average_vout_measured).</li>
+            				<li>Writes value to device.</li>
+            				<li>Tests to see if this is enough for calibration by comparing new
+                            pmbus reads to new measured reads and verifying if it is lower than
+                            percent_pass. If percent_pass is greater than the difference between
+                            the values then depending on whether highest_accuracy_in_max_tries is
+                            set, the calibration may be completed or continue to another iteration. If
+                            the percentage is greater than percent_quit then calibration exits as
+                            this amount of difference indicates some external problem. Alternatively, percent_quit may need to be increased.</li>
+            			</ol>
+            		</li>
+            		<li>Stops conversion.</li>
+            		<li>Sets vout_command to the nominal voltage specified.</li>
+            		<li>Returns OV and UV warnings and faults back to original settings.</li>
+            	</ol>
+            </remarks>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual vout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between vout meter and pmbus is greater it will quit immediately.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="instrumented">Whether there is instrumented equipment present that will supply voltage readings.  See task dependencies.</param>
+            <param name="pmbus_reads">The number of PMBus reads that will be averaged to represent the voltage PMBus reading.</param>
+            <param name="measure_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single voltage reading.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="push_OV_UV_fault_limits_percent">Will increase OV and decrease UV faults by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering faults.</param>
+            <param name="push_OV_UV_warn_limits_percent">Will increase OV and decrease UV warnings by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering warnings.</param>
+            <param name="turn_other_rails_off_during_calibration">If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Vout_Rail_Margins(System.Int32,System.Double,System.Double,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Calibrates the specified rail to the nominal voltage(vout_command). The 2 setpoints are obtained using the margin high and margin low for the specified rail.
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Starts by turning off all the rails (in order to avoid drawing too
+                    much current and triggering faults).  Unless "turn_other_rails_off_during_calibration" is set to false.</li>
+            		<li>Turns on the rail as specified.</li>
+            		<li>Prepares for different setpoints by changing the fault and warn limits for
+                    UV and OV to accommodate the max(setpoint 1,setpoint 2,nominal) and
+                    min(setpoint1,setpoint2,nominal) voltages as the calibration routine will be changing
+                    Vout to those values. The original settings are restored at the end.</li>
+            		<li>
+                        Calibrates voltage ouput parameters and voltage sensing parameters. That is, voltage output(meter):
+                        vout_scale_loop, vout_cal_offset as well as voltage
+                        sensed(pmbus):vout_scale_monitor,vout_cal_monitor. All 4 are calibrated.
+                        <ol type="i">
+            				<li>Sets output voltage= setpoint 1, pauses for 0.3 seconds and clears
+                            faults.</li>
+            				<li>Reads sensed and measured voltages. </li>
+            				<li>Sets output voltage= setpoint 2, pauses for 0.3 seconds and clears
+                            faults.</li>
+            				<li>Reads sensed and measured voltages.</li>
+            				<li>Calculates slope for vout_scale_loop: slope = (volts_measured2 -
+                                volts_measured1)/(setpoint2 - setpoint1).</li>
+                            <li>Read original vout_scale_loop on the device.</li>
+            				<li>Calculates new vout_scale_loop: new_vout_scale_loop = original_vout_scale_loop / slope.</li>
+            				<li>Writes value to device.</li>
+            				<li>Calculates slope for vout_scale_monitor: slope = (volts_read2 -
+                                volts_read1)/(volts_measured2 - volts_measured1)</li>
+                            <li>Read original vout_scale_monitor on the device.</li>
+            				<li>Calculates new vout_scale_monitor: new_vout_scale_monitor = original_vout_scale_monitor * slope</li>
+            				<li>Writes value to device.</li>
+            				<li>Sets output voltage = nominal voltage, pauses for 0.3 seconds and
+                            clears faults.</li>
+            				<li>Reads sensed and measured voltages.</li>
+            				<li>Calculates a new value for vout_cal_offset: new_vout_cal_offset =
+                            vout_cal_offset_original - (average_vout_measured - nominal_V)</li>
+            				<li>Writes value to device.</li>
+            				<li>Calculates a new value for vout_cal_monitor: new_vout_cal_monitor =
+                            vout_cal_monitor_original - (average_vout_sensed -
+                            average_vout_measured).</li>
+            				<li>Writes value to device.</li>
+            				<li>Tests to see if this is enough for calibration by comparing new
+                            pmbus reads to new measured reads and verifying if it is lower than
+                            percent_pass. If percent_pass is greater than the difference between
+                            the values then depending on whether highest_accuracy_in_max_tries is
+                            set, the calibration may be completed or continue to another iteration. If
+                            the percentage is greater than percent_quit then calibration exits as
+                            this amount of difference indicates some external problem. Alternatively, percent_quit may need to be increased.</li>
+            			</ol>
+            		</li>
+            		<li>Stops conversion.</li>
+            		<li>Sets vout_command to the nominal voltage specified.</li>
+            		<li>Returns OV and UV warnings and faults back to original settings.</li>
+            	</ol>
+            </remarks>
+            <param name="rail_number">Specfies the rail number to be calibrated.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual vout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between vout meter and pmbus is greater it will quit immediately.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="instrumented">Whether there is instrumented equipment present that will supply voltage readings.  See task dependencies.</param>
+            <param name="pmbus_reads">The number of PMBus reads that will be averaged to represent the voltage PMBus reading.</param>
+            <param name="measure_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single voltage reading.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="push_OV_UV_fault_limits_percent">Will increase OV and decrease UV faults by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering faults.</param>
+            <param name="push_OV_UV_warn_limits_percent">Will increase OV and decrease UV warnings by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering warnings.</param>
+            <param name="turn_other_rails_off_during_calibration">If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Vout_Rail(System.Int32,System.Double,System.Double,System.Double,System.Double,System.Double,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Double,System.Double,System.Boolean)">
+            <summary>
+            Calibrates the specified rail to the nominal voltage. Generally this would be the
+            nominal voltage that you had configured this rail for with the OV/UV faults and
+            warnings.
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Starts by turning off all the rails (in order to avoid drawing too
+                    much current and triggering faults).  Unless "turn_other_rails_off_during_calibration" is set to false.</li>
+            		<li>Turns on the rail as specified.</li>
+            		<li>Prepares for different setpoints by changing the fault and warn limits for
+                    UV and OV to accommodate the max(setpoint 1,setpoint 2,nominal) and
+                    min(setpoint1,setpoint2,nominal) voltages as the calibration routine will be changing
+                    Vout to those values. The original settings are restored at the end.</li>
+            		<li>
+                        Calibrates voltage ouput parameters and voltage sensing parameters. That is, voltage output(meter):
+                        vout_scale_loop, vout_cal_offset as well as voltage
+                        sensed(pmbus):vout_scale_monitor,vout_cal_monitor. All 4 are calibrated.
+                        <ol type="i">
+            				<li>Sets output voltage= setpoint 1, pauses for 0.3 seconds and clears
+                            faults.</li>
+            				<li>Reads sensed and measured voltages. </li>
+            				<li>Sets output voltage= setpoint 2, pauses for 0.3 seconds and clears
+                            faults.</li>
+            				<li>Reads sensed and measured voltages.</li>
+            				<li>Calculates slope for vout_scale_loop: slope = (volts_measured2 -
+                                volts_measured1)/(setpoint2 - setpoint1).</li>
+                            <li>Read original vout_scale_loop on the device.</li>
+            				<li>Calculates new vout_scale_loop: new_vout_scale_loop = original_vout_scale_loop / slope.</li>
+            				<li>Writes value to device.</li>
+            				<li>Calculates slope for vout_scale_monitor: slope = (volts_read2 -
+                                volts_read1)/(volts_measured2 - volts_measured1)</li>
+                            <li>Read original vout_scale_monitor on the device.</li>
+            				<li>Calculates new vout_scale_monitor: new_vout_scale_monitor = original_vout_scale_monitor * slope</li>
+            				<li>Writes value to device.</li>
+            				<li>Sets output voltage = nominal voltage, pauses for 0.3 seconds and
+                            clears faults.</li>
+            				<li>Reads sensed and measured voltages.</li>
+            				<li>Calculates a new value for vout_cal_offset: new_vout_cal_offset =
+                            vout_cal_offset_original - (average_vout_measured - nominal_V)</li>
+            				<li>Writes value to device.</li>
+            				<li>Calculates a new value for vout_cal_monitor: new_vout_cal_monitor =
+                            vout_cal_monitor_original - (average_vout_sensed -
+                            average_vout_measured).</li>
+            				<li>Writes value to device.</li>
+            				<li>Tests to see if this is enough for calibration by comparing new
+                            pmbus reads to new measured reads and verifying if it is lower than
+                            percent_pass. If percent_pass is greater than the difference between
+                            the values then depending on whether highest_accuracy_in_max_tries is
+                            set, the calibration may be completed or continue to another iteration. If
+                            the percentage is greater than percent_quit then calibration exits as
+                            this amount of difference indicates some external problem. Alternatively, percent_quit may need to be increased.</li>
+            			</ol>
+            		</li>
+            		<li>Stops conversion.</li>
+            		<li>Sets vout_command to the nominal voltage specified.</li>
+            		<li>Returns OV and UV warnings and faults back to original settings.</li>
+            	</ol>
+            </remarks>
+            <param name="rail_number">Specfies the rail number to be calibrated.</param>
+            <param name="set_point_1_V">A setpoint value that the voltage will be set to in order to get readings at different values to help calibrate.  This setpoint should be bigger than setpoint 2.</param>
+            <param name="set_point_2_V">A setpoint value that the voltage will be set to in order to get readings at different values to help calibrate.  Should be smaller than setpoint 1.</param>
+            <param name="nominal_V">The voltage that this rail will convert at when the calibration is completed.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual vout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between vout meter and pmbus is greater it will quit immediately.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="instrumented">Whether there is instrumented equipment present that will supply voltage readings.  See task dependencies.</param>
+            <param name="pmbus_reads">The number of PMBus reads that will be averaged to represent the voltage PMBus reading.</param>
+            <param name="measure_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single voltage reading.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="push_OV_UV_fault_limits_percent">Will increase OV and decrease UV faults by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering faults.</param>
+            <param name="push_OV_UV_warn_limits_percent">Will increase OV and decrease UV warnings by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering warnings.</param>
+            <param name="turn_other_rails_off_during_calibration">If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD91XX_Calibrate_Iout(TIDP.PMBus.PMBusDevice,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double,System.Double)">
+             <summary>
+             don't need to recalibrate vout if it is 1 V and within the tolerance 
+            if not fail
+             turn all pages off and turn on the specific page. To avoid overload.  And calibrate one page a time.
+             </summary>
+             <param name="device"></param>
+             <param name="expected_vout_value"></param>
+             <param name="vout_tolerance"></param>
+             <param name="load_current_ref_1">First current value to indicate to the user to set it to</param>
+             <param name="load_current_ref_2"></param>
+             <param name="offset_range">Current value in absolute value as opposed to percentage where offset outside of this value is intolerable.</param>
+             <param name="offset_tolerance">Current value which specifies that if offset found is less than this then it need not be calibrated as it is a good value.</param>
+             <param name="gain_range_percentage"></param>
+             <param name="gain_tolerance_percentage"></param>
+             <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_StoreAll(TIDP.PMBus.PMBusDevice)">
+            <summary>
+            store all parameters to flash.
+            </summary>
+            <param name="device"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Attach_SMBus_Adapter_If_None">
+            <summary>
+            If there is no SAA adapter previously created, look for one and
+            throw an exception if there is none.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Firmware_Download_via_Rom(System.String,System.Boolean,TIDP.Factory.TaskLibrary.Manufacturing.DataFlashOptions,System.Boolean,System.Boolean,System.Int32,System.Boolean,TIDP.PMBus.ProgramFlashBlockSelection,TIDP.PMBus.ProgramFlashChecksumCalculation,TIDP.PMBus.ProgramChecksumMode,System.Boolean,System.UInt64,System.Boolean,System.UInt64,System.Boolean,System.UInt64,System.UInt32,System.UInt32,System.Boolean)">
+            <summary>
+            see Manufacturing.UCD9XXX_Firmware_Download_via_Rom
+            </summary>
+            <param name="fileName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Rom_API_Message(System.Object,TIDP.PMBus.RomApi.MessageEventArgs)">
+            <summary>
+            ROM API Message event handler.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Test_Fan_1(System.String,System.Int32,System.Double,System.Double)">
+            <summary>
+            Calibrates fan_1.
+            </summary>
+            <remarks>
+            After user hooks it up the following happens:<ol>
+            <li>Installs fan</li>
+            <li>Sets speed to 100%</li>
+            <li>waits for <b>Wait_Time_ms</b> then reads fan speed through PMBus</li>
+            <li>Then writes 57% to PMBus waits for <b>Wait_Time_ms</b> and then reads PMBus fan speed again.</li>
+            <li>After reading those values then we bring the fan back to it's original state of being uninstalled and set to 100%.</li>
+            <li>Analysis is done afterwards so that a fail won't stop the fan from returning to its original state.</li>  
+            <li>Analysis tests to see if the speed of the fan at the second speed percentage is within an expected speed and
+            has a percentage that is within the bounds.</li>
+            <li>For example, speed1=100% and speed reads to be 100, speed2=50% and speed reads to be 70.
+            70 corresponds to 70% of the original speed since 70% is between the bounds 
+            of 30% and 80% it is acceptable.</li>
+            </ol>
+            </remarks>
+            <param name="Set_Up_Message">The message the user will see to help in the testing of the fan.</param>
+            <param name="Wait_Time_ms">The amount of time to wait before switching the speeds.</param>
+            <param name="Lower_Bound_Percent">The lower limit percentage that the measured second fan's speed percentage must be above.</param>
+            <param name="Upper_Bound_Percent">The upper limit percentage that the measured second fan's speed percentage must be below.</param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD91XX_Test_Fan_1(TIDP.PMBus.PMBusDevice,System.String,System.Int32,System.Double,System.Double)">
+            <summary>
+            There is only one setup message for the fan that will read the speed at 2 different fan speeds
+            100% and 57% to check to see if the speed of the fan actually decreases by a similar percentage.
+            Before reading the value it is important to wait a certain amount of time after issuing the command
+            to change the.
+            </summary>
+            <param name="device"></param>
+            <param name="setUPMessage"></param>
+            <param name="milliseconds"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD91XX_Calibrate_Temp(System.Double,System.Double)">
+            <summary>
+            Calibrates Read_Temperature1 and only good for device with one rail.  Devices like 91XX.  Works by comparing external readings and internal readings.
+            The external reading needs to be done with a chip sensing thermometer.
+            </summary>
+            <param name="Tolerance_Celsius">Number of degrees celsius that would be ok to differ from the external and internal readings to pass.</param>
+            <param name="Range_Celsius">Number of degrees to quit calibration due to large difference.</param>
+            <remarks>This is a manual task.  Note the parameter that is calibrated: Read_Temperature1.</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Calibrate_Vin(System.Double,System.Double,System.Boolean)">
+            <summary>
+            Calibrates VIN_SCALE instrumented or non-instrumented. 
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Obtains external meter measurement of input voltage from user or instrumented device.</li>
+            		<li>Takes PMBus reading of input voltage.</li>
+            		<li>Calibrates based on formula:<br/>
+                    Calculated_vin_scale = original_vin_scale * (pmbus_vin /
+                    input_voltage_V)</li>
+            	</ol>
+            </remarks>
+            <param name="percent_quit">Percentage of which a difference larger is considered too large to continue calibration.</param>
+            <param name="percent_pass">Percentage of which a difference less than is considered to be calibrated.</param>
+            <param name="instrumented">True if instrumented device is used otherwise false.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_All_Rails(System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Boolean,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Calibrates Iout for every phase for every rail.  Number of phases and rails are automatically obtained via Phase_Info.  
+            The max current for phase is obtained by looking at the (Over current fault limit per rail and dividing it by the number of phases)*0.8.
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Clears faults.</li>
+            		<li>Enables single phase for the first phase on the rail being calibrated.
+                    (From this step forward, the procedure is repeated if there are multiple
+                    phases).</li>
+            		<li>If instrumented, configures load with specified rise_time,
+                    fall_time.</li>
+            		<li>Prepares for calibration by pushing out the Vout Over Voltage and Under
+                    Voltage warnings and faults by 10% and 15% of the command voltage,
+                    respectively.</li>
+            		<li>Also sets the current fault response for Over Current and Under Current
+                    to <i>continue operation</i>.</li>
+            		<li>Starts conversion on specified rail. Allows 300 ms to ramp up.</li>
+            		<li>Activates the load and sets load to 10% of
+                    <b>max_phase_current</b>.</li>
+            		<li>Makes meter and PMBus reads of current.</li>
+            		<li>Adjusts iout_cal_offset to prepare for current calibration and writes to
+                    device. This is a quick offset fix to prepare for calibration.</li>
+            		<li>
+                        Begins the iterated calibration routine
+                        <ol type="i">
+            				<li>Sets load to 10% of <b>max_phase_current.</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Sets load to 90% of <b>max_phase_current.</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Calculates new iout_cal_gain and writes to device.
+                                <ol type="i">
+            						<li>slope = (iout_meter_2 - iout_meter_1) /
+                                    (iout_pmbus_2 - iout_pmbus_1); </li>
+            						<li>new_iout_cal_gain = old_iout_cal_gain / slope;</li>
+            					</ol>
+            				</li>
+            				<li>Sets load to 10% of <b>max_phase_current</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Adjusts iout_cal_offset:new_iout_cal_offset = old_iout_cal_offset -
+                            (iout_pmbus - iout_meter)</li>
+            				<li>Tests calibrated values at current: 0 A, 0.5* max_phased_current,
+                            and <b>max_phase_current</b> checking that the percentage difference is
+                            acceptable.</li>
+            				<li>Re-iterates if percentage difference between measured and sensed is greater than percent_pass.</li>
+            			</ol>
+            		</li>
+            	</ol>
+            </remarks>
+            <param name="rise_time_A_per_uS">The rate at which the current ramps from a low to a high.  If non instrumented enter 0 (Doesn't matter as it is ignored).</param>
+            <param name="fall_time_A_per_uS">The rate at which the current ramps from a high to a low.  If non instrumented enter 0 (Doesn't matter as it is ignored).</param>
+            <param name="num_of_pmbus_reads">The number of PMBus reads that will be averaged to represent the iout PMBus reading.</param>
+            <param name="num_of_meter_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single iout reading.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual iout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between iout meter and pmbus is greater it will quit immediately.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="instrumented">Whether there is instrumented equipment present that can alter the current like a Chroma Load.  See task dependencies.</param>
+            <param name="time_between_vout_on_and_load_on_ms">After turning on vout for a rail the load will wait this much time before turning on.</param>
+            <param name="turn_other_rails_off_during_calibration"> If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_All_Rails_Rise_Time_Fall_Time_Visibilty(System.Boolean)">
+            <summary>
+            this method is used by UCD92XX_Calibrate_Iout_All_Rails for two of it's parameters to determine if they are visibile.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_Rail_OC_Limit(System.Int32,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Boolean,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Calibrates Iout for every phase on the specified rail. This is done by looking at the (IOUT_OC_FAULT_LIMIT/NUM_PHASES)*0.8
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Clears faults.</li>
+            		<li>Enables single phase for the first phase on the rail being calibrated.
+                    (From this step forward, the procedure is repeated if there are multiple
+                    phases).</li>
+            		<li>If instrumented, configures load with specified rise_time,
+                    fall_time.</li>
+            		<li>Prepares for calibration by pushing out the Vout Over Voltage and Under
+                    Voltage warnings and faults by 10% and 15% of the command voltage,
+                    respectively.</li>
+            		<li>Also sets the current fault response for Over Current and Under Current
+                    to <i>continue operation</i>.</li>
+            		<li>Starts conversion on specified rail. Allows 300 ms to ramp up.</li>
+            		<li>Activates the load and sets load to 10% of
+                    <b>max_phase_current</b>.</li>
+            		<li>Makes meter and PMBus reads of current.</li>
+            		<li>Adjusts iout_cal_offset to prepare for current calibration and writes to
+                    device. This is a quick offset fix to prepare for calibration.</li>
+            		<li>
+                        Begins the iterated calibration routine
+                        <ol type="i">
+            				<li>Sets load to 10% of <b>max_phase_current.</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Sets load to 90% of <b>max_phase_current.</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Calculates new iout_cal_gain and writes to device.
+                                <ol type="i">
+            						<li>slope = (iout_meter_2 - iout_meter_1) /
+                                    (iout_pmbus_2 - iout_pmbus_1); </li>
+            						<li>new_iout_cal_gain = old_iout_cal_gain / slope;</li>
+            					</ol>
+            				</li>
+            				<li>Sets load to 10% of <b>max_phase_current</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Adjusts iout_cal_offset:new_iout_cal_offset = old_iout_cal_offset -
+                            (iout_pmbus - iout_meter)</li>
+            				<li>Tests calibrated values at current: 0 A, 0.5* max_phased_current,
+                            and <b>max_phase_current</b> checking that the percentage difference is
+                            acceptable.</li>
+            				<li>Re-iterates if percentage difference between measured and sensed is greater than percent_pass.</li>
+            			</ol>
+            		</li>
+            	</ol>
+            </remarks>
+            <param name="rail_num">Rail number that is to be calibrated.</param>
+            <param name="rise_time_A_per_uS">The rate at which the current ramps from a low to a high.  If non instrumented enter 0 (Doesn't matter as it is ignored).</param>
+            <param name="fall_time_A_per_uS">The rate at which the current ramps from a high to a low.  If non instrumented enter 0 (Doesn't matter as it is ignored).</param>
+            <param name="num_of_pmbus_reads">The number of PMBus reads that will be averaged to represent the iout PMBus reading.</param>
+            <param name="num_of_meter_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single iout reading.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual iout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between iout meter and pmbus is greater it will quit immediately.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="instrumented">Whether there is instrumented equipment present that can alter the current like a Chroma Load.  See task dependencies.</param>
+            <param name="time_between_vout_on_and_load_on_ms">After turning on vout for a rail the load will wait this much time before turning on.</param>
+            <param name="turn_other_rails_off_during_calibration"> If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_Rail(System.Int32,System.Double,System.Double,System.Double,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Boolean,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Calibrates Iout for every phase on the specified rail.
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Clears faults.</li>
+            		<li>Enables single phase for the first phase on the rail being calibrated.
+                    (From this step forward, the procedure is repeated if there are multiple
+                    phases).</li>
+            		<li>If instrumented, configures load with specified rise_time,
+                    fall_time.</li>
+            		<li>Prepares for calibration by pushing out the Vout Over Voltage and Under
+                    Voltage warnings and faults by 10% and 15% of the command voltage,
+                    respectively.</li>
+            		<li>Also sets the current fault response for Over Current and Under Current
+                    to <i>continue operation</i>.</li>
+            		<li>Starts conversion on specified rail. Allows 300 ms to ramp up.</li>
+            		<li>Activates the load and sets load to 10% of
+                    <b>max_phase_current</b>.</li>
+            		<li>Makes meter and PMBus reads of current.</li>
+            		<li>Adjusts iout_cal_offset to prepare for current calibration and writes to
+                    device. This is a quick offset fix to prepare for calibration.</li>
+            		<li>
+                        Begins the iterated calibration routine
+                        <ol type="i">
+            				<li>Sets load to 10% of <b>max_phase_current.</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Sets load to 90% of <b>max_phase_current.</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Calculates new iout_cal_gain and writes to device.
+                                <ol type="i">
+            						<li>slope = (iout_meter_2 - iout_meter_1) /
+                                    (iout_pmbus_2 - iout_pmbus_1); </li>
+            						<li>new_iout_cal_gain = old_iout_cal_gain / slope;</li>
+            					</ol>
+            				</li>
+            				<li>Sets load to 10% of <b>max_phase_current</b>.</li>
+            				<li>Makes pmbus and meter readings.</li>
+            				<li>Adjusts iout_cal_offset:new_iout_cal_offset = old_iout_cal_offset -
+                            (iout_pmbus - iout_meter)</li>
+            				<li>Tests calibrated values at current: 0 A, 0.5* max_phased_current,
+                            and <b>max_phase_current</b> checking that the percentage difference is
+                            acceptable.</li>
+            				<li>Re-iterates if percentage difference between measured and sensed is greater than percent_pass.</li>
+            			</ol>
+            		</li>
+            	</ol>
+            </remarks>
+            <param name="rail_num">Rail number that is to be calibrated.</param>
+            <param name="max_phase_current_A">Max current capabable for a phase on this rail.  Obtained from data sheets for rail.  Also 10% and 90% of this max current will be used as setpoints for current calibration.  Make sure that the load can handle this.</param>
+            <param name="rise_time_A_per_uS">The rate at which the current ramps from a low to a high.  If non instrumented enter 0 (Doesn't matter as it is ignored).</param>
+            <param name="fall_time_A_per_uS">The rate at which the current ramps from a high to a low.  If non instrumented enter 0 (Doesn't matter as it is ignored).</param>
+            <param name="num_of_pmbus_reads">The number of PMBus reads that will be averaged to represent the iout PMBus reading.</param>
+            <param name="num_of_meter_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single iout reading.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual iout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between iout meter and pmbus is greater it will quit immediately.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="instrumented">Whether there is instrumented equipment present that can alter the current like a Chroma Load.  See task dependencies.</param>
+            <param name="time_between_vout_on_and_load_on_ms">After turning on vout for a rail the load will wait this much time before turning on.</param>
+            <param name="turn_other_rails_off_during_calibration">If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_Low_High_All_Rails(System.Int32,System.Int32,System.Double,System.Double,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            Calibrates Iout for every phase for every rail.  Number of phases and rails are automatically obtained via Phase_Info.  Purely manual and uses setpoints that are defined by the user.  It uses two setpoints
+            to calibrate.  A dialog box will ask for a low setpoint at which point the user will define it and enter it based on their load reading.  
+            This task is ideal for those who can't set their load to a specific value.
+            </summary>
+            <remarks>
+            	<ol><li>Based on number of rails configured repeats the process below for each rail.</li>
+            		<li>Clears faults.</li>
+            		<li>Enables single phase for the first phase on the rail being calibrated.
+                    (From this step forward, the procedure is repeated if there are multiple
+                    phases).</li>
+            		<li>Prepares for calibration by pushing out the Vout Over Voltage and Under
+                    Voltage warnings and faults by 10% and 15% of the command voltage,
+                    respectively.</li>
+            		<li>Also sets the current fault response for Over Current and Under Current
+                    to <i>continue operation</i>.</li>
+            		<li>Starts conversion on specified rail. Allows for time_between_vout_on_and_load_on_ms(parameter) to ramp up.</li>
+                    <li>Asks user to setup low setpoint for load and takes value.</li>
+            		<li>Makes PMBus reads of current.</li>
+            		<li>Adjusts iout_cal_offset to prepare for current calibration and writes to
+                    device. This is a quick offset fix to prepare for calibration.</li>
+            		<li>
+                        Begins the iterated calibration routine
+                        <ol type="i">
+            				<li>Uses the setpiont1 above for the low.</li>
+            				<li>Makes PMBus readings.</li>
+            				<li>Requests setpoint2 the high value from the user.</li>
+            				<li>Makes pmbus readings.</li>
+            				<li>Calculates new iout_cal_gain and writes to device.
+                                <ol type="i">
+            						<li>slope = (iout_meter_2 - iout_meter_1) /
+                                    (iout_pmbus_2 - iout_pmbus_1); </li>
+            						<li>new_iout_cal_gain = old_iout_cal_gain / slope;</li>
+            					</ol>
+            				</li>
+            				<li>Sets load to setpoint low and asks user to enter that value.</li>
+            				<li>Makes pmbus readings.</li>
+            				<li>Adjusts iout_cal_offset:new_iout_cal_offset = old_iout_cal_offset -
+                            (iout_pmbus - iout_meter)</li>
+            				<li>Tests calibrated values at the recent low setpoint checking that the percentage difference is
+                            acceptable.</li>
+            				<li>Re-iterates if percentage difference between measured and sensed is greater than percent_pass.</li>
+            			</ol>
+            		</li>
+            	</ol>
+            </remarks>                       
+            <param name="num_of_pmbus_reads">The number of PMBus reads that will be averaged to represent the iout PMBus reading.</param>        
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual iout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between iout meter and pmbus is greater it will quit immediately.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>        
+            <param name="time_between_vout_on_and_load_on_ms">After turning on vout for a rail the load will wait this much time before turning on.</param>
+            <param name="turn_other_rails_off_during_calibration"> If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_Low_High_Rail(System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Boolean,System.Int32,System.Boolean,TIDP.Factory.TaskLibrary.UCD9XXX.MeasurementMethod,System.Double)">
+            <summary>
+            Calibrates Iout for every phase on the specified rail. Purely manual and uses setpoints that are defined by the user.  It uses two setpoints
+            to calibrate.  A dialog box will ask for a low setpoint at which point the user will define it and enter it based on their load reading.  
+            This task is ideal for those who can't set their load to a specific value.
+            </summary>
+            <remarks>
+            	<ol>
+            		<li>Clears faults.</li>
+            		<li>Enables single phase for the first phase on the rail being calibrated.
+                    (From this step forward, the procedure is repeated if there are multiple
+                    phases).</li>
+            		<li>Prepares for calibration by pushing out the Vout Over Voltage and Under
+                    Voltage warnings and faults by 10% and 15% of the command voltage,
+                    respectively.</li>
+            		<li>Also sets the current fault response for Over Current and Under Current
+                    to <i>continue operation</i>.</li>
+            		<li>Starts conversion on specified rail. Allows for time_between_vout_on_and_load_on_ms(parameter) to ramp up.</li>
+                    <li>Asks user to setup low setpoint for load and takes value.</li>
+            		<li>Makes PMBus reads of current.</li>
+            		<li>Adjusts iout_cal_offset to prepare for current calibration and writes to
+                    device. This is a quick offset fix to prepare for calibration.</li>
+            		<li>
+                        Begins the iterated calibration routine
+                        <ol type="i">
+            				<li>Uses the setpiont1 above for the low.</li>
+            				<li>Makes PMBus readings.</li>
+            				<li>Requests setpoint2 the high value from the user.</li>
+            				<li>Makes pmbus readings.</li>
+            				<li>Calculates new iout_cal_gain and writes to device.
+                                <ol type="i">
+            						<li>slope = (iout_meter_2 - iout_meter_1) /
+                                    (iout_pmbus_2 - iout_pmbus_1); </li>
+            						<li>new_iout_cal_gain = old_iout_cal_gain / slope;</li>
+            					</ol>
+            				</li>
+            				<li>Sets load to setpoint low and asks user to enter that value.</li>
+            				<li>Makes pmbus readings.</li>
+            				<li>Adjusts iout_cal_offset:new_iout_cal_offset = old_iout_cal_offset -
+                            (iout_pmbus - iout_meter)</li>
+            				<li>Tests calibrated values at the recent low setpoint checking that the percentage difference is
+                            acceptable.</li>
+            				<li>Re-iterates if percentage difference between measured and sensed is greater than percent_pass.</li>
+            			</ol>
+            		</li>
+            	</ol>
+            </remarks>
+            <param name="rail_num">Rail number that is to be calibrated.</param>                
+            <param name="num_of_pmbus_reads">The number of PMBus reads that will be averaged to represent the iout PMBus reading.</param>
+            <param name="num_of_meter_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single iout reading.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual iout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between iout meter and pmbus is greater it will quit immediately.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="turn_other_rails_off_during_calibration">If set to true will turn off rails other than the one currently being calibrated.</param>
+            <param name="time_between_vout_on_and_load_on_ms">After turning on vout for a rail the load will wait this much time before turning on.</param>
+            <param name="measurement_method">Specify whether the reading will be taken using an ammeter, or by measuring the voltage drop across the current sense resistor.</param>
+            <param name="current_sense_resistor_Ohm">Resistor value used for the current sense.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Calibrate_Vout_Rail_Fast(System.Int32,System.Double,System.Double,System.Int32,System.Boolean,System.Int32,System.Int32,System.Boolean,System.Double,System.Double,System.Boolean)">
+            <summary>
+            This is a fast form of UCD92XX_Calibrate_Vout_Rail which takes 2 setpoints.  Here only one value is taken and the offsets are calibrated, not the scales.
+            Calibrates the specified rail based on the vout_Command voltage.  Generally this would be the nominal voltage that you had configured
+            this rail for with the OV/UV faults and warnings.
+            
+            Calibrate only for current VOUT_COMMAND setting.  Fast, but you will need to recalibrate if you adjust your setpoint. 
+            Do not select if you will be using margining.
+            </summary>
+            <remarks>
+            <ol>
+            <li>Starts by turning off all the rails (in order to avoid drawing too much current and triggering faults).</li>
+            <li>Turns on the rail given as input.</li>
+            <li>Calibrates voltage ouput and voltage sensed. That is, voltage output(meter): vout_cal_offset
+            and voltage sensed(pmbus):vout_cal_monitor.  Both are to be calibrated.
+            <ol type="i">
+            <li>Sets output voltage=nominal voltage, pauses for 0.3 seconds and clears faults.</li>
+            <li>Reads sensed and measured voltages.</li>
+            <li>Calculates a new value for vout_cal_offset: new_vout_cal_offset = vout_cal_offset_original - (average_vout_measured - nominal_V)</li>
+            <li>Writes value to device.</li>
+            <li>Calculates a new value for vout_cal_monitor: new_vout_cal_monitor = vout_cal_monitor_original - (average_vout_sensed - average_vout_measured).</li>
+            <li>Writes value to device.</li>
+            <li>Tests to see if this is enough for calibration by comparing new pmbus reads to new measured reads and verifying that their percent difference is lower than percent_pass.  If percent_pass is greater than the difference between the values then depending on whether highest_accuracy_in_max_tries is set the calibration may be completed or continued to the next iteration. If the percentage is greater than percent_quit then calibration exits as this amount of difference indicates some external problem.  Alternatively, the percent_quit may need to be increased.</li>
+            <li>Either finishes calibration or re-iterates these steps.</li>
+            </ol>
+            </li>
+            <li>Stops conversion.</li>
+            <li>Sets vout_command to the nominal voltage specified.</li>
+            <li>Returns OV and UV warnings and faults back to original settings.</li>
+            </ol>
+            </remarks>
+            <param name="rail_number">Specfies the rail number to be calibrated.</param>
+            <param name="percent_pass">The percentage to decide whether the percent difference between the actual vout meter reading and the vout pmbus reading is small enought to pass.</param>
+            <param name="percent_quit">During the iterations of the calibration if the percent difference between vout meter and pmbus is greater it will quit immediately.</param>
+            <param name="max_calibration_tries">The max number of iterations to try to calibrate.</param>
+            <param name="instrumented">Whether there is instrumented equipment present that will supply voltage readings.  See task dependencies.</param>
+            <param name="pmbus_reads">The number of PMBus reads that will be averaged to represent the voltage PMBus reading.</param>
+            <param name="measure_reads">Number of non-PMBus meter readings to take when performing calibration.  Recommend 1 for manual calibration (user enters reading manually) and 12 for instrumented calibration (fully automated).  When 2+ readings are taken they will be averaged to produce a single voltage reading.</param>
+            <param name="highest_accuracy_in_max_tries">If true will complete the max_calibration_tries else will check with percent_pass each iteration.</param>
+            <param name="push_OV_UV_fault_limits_percent">Will increase OV and decrease UV faults by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering faults.</param>
+            <param name="push_OV_UV_warn_limits_percent">Will increase OV and decrease UV warnings by a percentage relative to the largest and smallest values from the setpoints and nominal. Avoids triggering warnings.</param>        
+            <param name="turn_other_rails_off_during_calibration">If set to true will turn off rails other than the one currently being calibrated.</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Configure_Discrete_Operation_Mode">
+            <summary>
+            Takes a snapshot of commands critical to allowing single rail operation, and then
+            forces a configuration with no dependencies, no tracking, simple soft start or stop,
+            etc.
+            </summary>
+            <remarks>
+            Commands written (only if supported on device):
+            <ol>
+            <li>ON_OFF_CONFIG - set to OPERATION only 0x1A</li>
+            <li>GPIO_SEQ_CONFIG - disables all dependencies by writing an all 0x00 block</li>
+            <li>TRACKING_MODE - tracking disabled, 0x80</li>
+            <li>SEQ_TIMEOUT - disabled, 0x0000</li>
+            <li>TON_DELAY - set to 0 ms</li>
+            <li>TON_RISE - set to 5 ms</li>
+            <li>TOFF_DELAY - set to 0 ms</li>
+            <li>TOFF_FALL - set to 5 ms</li>        
+            </ol>
+            </remarks>                
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Undo_Configure_Discrete_Operation_Mode">
+            <summary>
+            Restores the configuration that was saved when 
+            Configure_Discrete_Operation_Mode() was invoked.
+            </summary>
+            <remarks>Should only be called if Configure_Discrete_Operation_Mode() was invoked.</remarks>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9240_Read_Average_Measured_And_Device_Current(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,TIDP.Factory.Core.IFactoryInstrumentation,System.Double,TIDP.PMBus.PMBusDevice,System.Double@,System.Double@)">
+            <summary>
+            will return output the pmbus average and meter average read.
+            </summary>
+            <param name="page_i"></param>
+            <param name="phase_i"></param>
+            <param name="num_of_pmbus_reads"></param>
+            <param name="num_of_meter_reads"></param>
+            <param name="instrumented"></param>
+            <param name="instrumentation"></param>
+            <param name="current"></param>
+            <param name="device"></param>
+            <param name="iout_pmbus_avg"></param>
+            <param name="iout_meter_avg"></param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Check_Status(System.Int32)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_Page_Phase(System.Int32,System.Int32,System.Double,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Double,System.Double,System.Boolean,System.Boolean,System.Int32,System.Boolean)">
+            <summary>
+            give a page and phase and 2 set points will calibrate accordingly. 
+            The is_enabled is for whether this phase will be enabled after calibration is complete.
+            Tolerance is relative to measured value.
+            </summary>
+            <param name="page"></param>
+            <param name="phase"></param>
+            <param name="set_point_1_A"></param>
+            <param name="set_point_2_A"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD92XX_Calibrate_Iout_Page_Phase_Low_High(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Double,System.Double,System.Boolean,System.Int32,System.Boolean,TIDP.Factory.TaskLibrary.UCD9XXX.MeasurementMethod,System.Double)">
+            <summary>
+            give a page and phase and 2 set points will calibrate accordingly. 
+            The is_enabled is for whether this phase will be enabled after calibration is complete.
+            Tolerance is relative to measured value.
+            </summary>
+            <param name="page"></param>
+            <param name="phase"></param>
+            <param name="set_point_1_A"></param>
+            <param name="set_point_2_A"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Get_Load_Low_Setpoint_Message(TIDP.Factory.TaskLibrary.UCD9XXX.MeasurementMethod,System.Double)">
+            <summary>
+            Asks the user to set their load to a low value (relative to the high value that they have prepared).
+            So 2 purposes:
+            1) set to low.
+            2) enter that low value.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Stop_Conversion">
+            <summary>
+            Stops conversion on all rails using whatever method in ON_OFF_CONFIG has
+            configured. if the rail is set to Always Converting, the rail will not
+            be commanded off.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Stop_Conversion(System.Int32)">
+            <summary>
+            Stops conversion on a specific rail. May effect other rails if ON_OFF_CONFIG
+            is set to use CONTROL, as CONTROL will be set to off in this case.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Start_Conversion_With_Clear_Faults(System.Int32)">
+            <summary>
+            Starts conversion on a sepcific rail, trying to clear any
+            existing faults before turning on the rail. If the rail is not
+            set to Always Converting, it will first be turned off. If it
+            is set to Always Converting, only a CLEAR_FAULTS is done.
+            This means that, at least for UCD92xx, the rail may not be
+            converting in this case.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Start_Conversion_With_Clear_Faults">
+            <summary>
+            Starts conversion on a all rails configured, trying to clear any
+            existing faults before turning on the rail. See 
+            Start_Conversion_With_Clear_Faults(page_i) for details.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Stop_Conversion">
+            <summary>
+            Stops conversion on all rails and sleeps for SLEEP_TIME_OFF.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Stop_Conversion(System.Int32)">
+            <summary>
+            Stops conversion on all rails. and sleeps for sleep_time.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Stop_Conversion(System.Int32,System.Int32)">
+            <summary>
+            Stops conversion on specific rail. If you would like to stop all rails then 
+            use UCD9XXX_Stop_Conversion(device,sleeptime)
+            </summary>
+            <param name="page_index">
+            Normally a 0-based rail index. But can also pass 0xFF to stop
+            conversion on all rails.
+            </param>
+            <param name="sleep_time">millisecond for sleeping</param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD91XX_Calibrate_Vout_Page(TIDP.PMBus.PMBusDevice,TIDP.PMBus.PageInfo,System.Nullable{System.Double},System.Double,System.Double,System.Double,System.Double)">
+             <summary>
+             <!--Theory + Example
+            
+             set default output voltage 1v by setting vout_command to 1v also known as Vref, set point the desired voltage vout.
+            
+             trim with example:
+             1. setpoint =1V set programatically by user configuring this
+             2. meter= 1.05V user enters
+             3. trim= .05 V calcualte difference abs(1-2).
+             4. check percentage_diff = Math.Abs(((vout_meter-vout_set)/vout_set)*100) = 5%
+             trim_range configured was 10%  since 5% <10% and is greater than trim_tolerance which was configured for 0.5%
+             0.5%<5%<10% so we can write to pmbus.
+             4. write the trim to pmbus. Then test the trim.
+            5.    If at this point percentage diff is smaller than tolerance than go to next task(scale calibration) else continue with the following,
+            6.    get another vout_meter reading(ask user pop up box).
+            7.    keep doing this until the offset percentage is <0.5% (3 times maximum)
+            8.    if after 3 times give
+            so I show them a box that says do you want to go to next task or continue calibrating 
+            so user says I want to continue calibrating 
+            give choice after after sets of configurable 3. -->
+             </summary>
+             <param name="device"></param>
+             <param name="page_info"></param>
+             <param name="vout_set_point"></param>
+             <param name="trim_range"></param>
+             <param name="scale_range"></param>
+             <param name="trim_tolerance"></param>
+             <param name="scale_tolerance"></param>
+             <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Read_Vout_Measure(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            reads vout from either the instrumentation(measured) or through pmbus(sensed) if measured set to true if sensed set to false.
+            Also indicate the number of times you wish for that value to be read.  If it is greater than 3 then the top and bottom values will be 
+            thrown out and average the remaining.
+            </summary>
+            <param name="page"></param>
+            <param name="times_to_read"></param>
+            <param name="instrumented"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.UCD9XXX_Read_Vout_Pmbus(System.Int32,System.Int32)">
+            <summary>
+            reads vout from either the instrumentation(measured) or through pmbus(sensed) if measured set to true if sensed set to false.
+            Also indicate the number of times you wish for that value to be read.  If it is greater than 3 then the top and bottom values will be 
+            thrown out and average the remaining.
+            </summary>
+            <param name="page"></param>
+            <param name="times_to_read"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.alter_vout_limit_high(System.Int32,System.Double,System.Double,System.Double)">
+            <summary>
+             Sends the PMBus commands associated to setting the output 
+             upper voltage limits based on the input value. 
+            </summary>
+            <param name="voltage"></param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.alter_vout_limit_low(System.Int32,System.Double,System.Double,System.Double)">
+            <summary>
+             Sends the PMBus commands associated to setting the output 
+             upper voltage limits based on the input value. 
+            </summary>
+            <param name="voltage"></param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.verify_pass(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            returns true if passes.  throws exception if percentage greater than percent quit. returns false if between percent_pass and percent_quit.
+            </summary>
+            <param name="sensed"></param>
+            <param name="measured"></param>
+            <param name="percent_pass"></param>
+            <param name="percent_quit"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Check_Status(TIDP.PMBus.Commands.IPMBusStatusReadOnlyParameter)">
+            <summary>
+            helper for UCD92XX_check_status()
+            </summary>
+            <param name="status_param"></param>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Verify_Rail_Is_Configured_On(System.Int32)">
+            <summary>
+            Throws an exception if Plugin.Device's ON_OFF_CONFIG, OPERATION, and CONTROL
+            settings do not indicate it is configured to regulate.
+            </summary>
+            <remarks>Added by mmuegel on 12/31/2009</remarks>
+        </member>
+        <member name="M:TIDP.Factory.TaskLibrary.UCD9XXX.Verify_Rail_Is_Configured_Off(System.Int32)">
+            <summary>
+            Throws an exception if Plugin.Device's ON_OFF_CONFIG, OPERATION, and CONTROL
+            settings do not indicate it is configured off.
+            </summary>
+            <remarks>Added by mmuegel on 12/31/2009</remarks>
+        </member>
+        <member name="T:TIDP.Factory.TaskLibrary.UCD9XXX.MeasurementMethod">
+            <summary>
+            Applies to current calibration task low/high.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TIDP.Factory.InstrumentationCommunication</name>
+    </assembly>
+    <members>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.GPIBUtility.Test_System(NationalInstruments.NI4882.Board)">
+            <summary>
+            not completed.... seems to hang if you do the testsystem returning a bool.
+            </summary>
+            <param name="board_address"></param>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.GPIBUtility.Is_A_Device_At_Address(NationalInstruments.NI4882.Board,System.Int32,System.Int32)">
+            <summary>
+            it appearrs that if there are no devices it will throw an invalid operation exception when looking for a device
+            if there is one device on the controller and you are looking for another device than it will return false and not throw an exception.
+            developer should handle boolean and exception case.
+            </summary>
+            <param name="GPIB_Board"></param>
+            <param name="primary_address"></param>
+            <param name="secondary_address"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.GPIBUtility.Is_A_Device_At_Address(System.Int32,System.Int32,System.Int32)">
+            <summary>
+             it appearrs that if there are no devices it will throw an invalid operation exception when looking for a device
+             if there is one device on the controller and you are looking for another device than it will return false and not throw an exception.
+             developer should handle boolean and exception case.
+            </summary>
+             <param name="GPIB_Board"></param>
+             <param name="address"></param>
+             <returns></returns>
+        </member>
+        <member name="T:TIDP.Factory.InstrumentationCommunication.SimpleReadWriteForm">
+            <summary>
+            Summary description for Form1.
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.InstrumentationCommunication.SimpleReadWriteForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.SimpleReadWriteForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.SimpleReadWriteForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.SimpleReadWriteForm.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:TIDP.Factory.InstrumentationCommunication.SelectResource">
+            <summary>
+            Summary description for SelectResource.
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.InstrumentationCommunication.SelectResource.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.SelectResource.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.SelectResource.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.VisaUtility.FindResources">
+            <summary>
+            Find all the resources on a Visa scan.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.InstrumentationCommunication.VisaUtility.Get_Resource_Identification(System.String)">
+            <summary>
+            opens a messagebasedsession and then sends *IDN? and then closes the session afterwards.
+            returns null if resource can't be opened.
+            </summary>
+            <param name="resource_name"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

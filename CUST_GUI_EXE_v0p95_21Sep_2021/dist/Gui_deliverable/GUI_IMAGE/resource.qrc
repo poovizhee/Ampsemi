@@ -1,0 +1,37 @@
+<RCC>
+  <qresource prefix="C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/">
+    <file>BGstart1.png</file>
+    <file>BGstart2.png</file>
+    <file>but0.png</file>
+    <file>but0_hover.png</file>
+    <file>but1.png</file>
+    <file>horizontal_arrowA.png</file>
+    <file>horizontal_arrowB.png</file>
+    <file>but1_hover.png</file>
+    <file>custom_icon.png</file>
+    <file>custom_icon_hover.png</file>
+    <file>Device_configuration_icon.png</file>
+    <file>Device_configuration_icon_hover.png</file>
+    <file>faults_edit.png</file>
+    <file>faults_edit_hover.png</file>
+    <file>Help Icon.png</file>
+    <file>Home_icon.png</file>
+    <file>Home_icon_hover.png</file>
+    <file>LOGO.png</file>
+    <file>mtp_read2.png</file>
+    <file>power_green_icon.png</file>
+    <file>power_grey_icon.png</file>
+    <file>RailA_phaseAddDrop.png</file>
+    <file>RailB_phaseAddDrop.png</file>
+    <file>resource.qrc</file>
+    <file>Status_off_button.png</file>
+    <file>Status_on_button.png</file>
+    <file>Telemetry_icon.png</file>
+    <file>Telemetry_icon_hover.png</file>
+    <file>BGstart1.png</file>
+    <file>RailA_phaseAddDrop.png</file>
+    <file>RailB_phaseAddDrop.png</file>
+    <file>LOGO.png</file>
+    <file>mtp_read2.png</file>
+  </qresource>
+</RCC>

@@ -1,0 +1,386 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TIDP.Factory.Instrumentation</name>
+    </assembly>
+    <members>
+        <member name="T:TIDP.Factory.Instrumentation.Commands.ARPS">
+            <summary>
+            some power supplies only understand ARPS like the 6032 in Taiwan for Delta manufacturing.
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.ARPS.OUT">
+            <summary>
+            "OUT"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.ARPS.ON">
+            <summary>
+            0
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.ARPS.OFF">
+            <summary>
+            1
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.ChromaLoad.CHROMA_RANGE">
+            <summary>
+            "RANG"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.WRITE">
+            <summary>
+            "ibwrt"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.CONFIGURE">
+            <summary>
+            "CONF"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.VOLTAGE">
+            <summary>
+            "VOLT"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.OUTP">
+            <summary>
+            "OUTP"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.ON">
+            <summary>
+            "ON"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.OFF">
+            <summary>
+            "OFF"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.COLON">
+            <summary>
+            ":"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.CURR">
+            <summary>
+            "CURR"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.QUESTION">
+            <summary>
+            "?"
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.RST">
+            <summary>
+            *RST //reset
+            </summary>
+        </member>
+        <member name="F:TIDP.Factory.Instrumentation.Commands.SCPI.OUTPSTAT">
+            <summary>
+            "OUTP:STAT"
+            </summary>
+        </member>
+        <member name="T:TIDP.Factory.Instrumentation.Commands.SCPI.ChromaPowerSupply">
+            <summary>
+            62012p has a different syntax to set and measure.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma630X.#ctor">
+            <summary>
+            Single chroma load for 6300
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            (not available)
+            </remarks>        
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma630X.Measure_Voltage">
+            <summary>
+            for all the output voltages i.e rail voltages we will be measuring them with the Chroma load that has 8 channel.  
+            Going in pairs of 2 since each module takes 2. rail 1= channel 1, rail 2= channel 3 rail 3= channel 5 rail 4 = channel 7
+            </summary>
+            <param name="rail_num"></param>
+            <param name="instrumentation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma630X.Measure_Current">
+            <summary>
+            mode indicating the constant current high if it is 1 it is CCLOW if it is 2 then it is CCHIGH. or whatever they were configured to be.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma630X.Configure_Load(System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            At the end of this function the mode is set to B - so CCHigh value.
+            low current setpoint and high current setpoint.
+            rise time and fall time will be use for both.  Best case to apply the longer rise_time and fall_time.
+            rise/fall in A/uS.
+            
+            
+            </summary>
+            <param name="CCLow"></param>
+            <param name="CCHigh"></param>
+            <param name="rise_time"></param>
+            <param name="fall_time"></param>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma630X.Set_Load_Current_Mode(System.Boolean,System.Boolean)">
+            <summary>
+            dynamic isn't currently supported.
+            low=true is for mode:curr:a
+            low=false is for mode:curr:b
+            </summary>
+            <param name="low"></param>
+            <param name="dynamic"></param>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma6360X.#ctor">
+            <summary>
+            Single chroma load 63600
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            (not available)
+            </remarks>
+            <param name="channel">Set channel for load in a multi channel. If N/A then set to 1</param>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma6360X.Measure_Voltage">
+            <summary>
+            for all the output voltages i.e rail voltages we will be measuring them with the Chroma load that has 8 channel.  
+            Going in pairs of 2 since each module takes 2. rail 1= channel 1, rail 2= channel 3 rail 3= channel 5 rail 4 = channel 7
+            </summary>
+            <param name="rail_num"></param>
+            <param name="instrumentation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma6360X.Measure_Current">
+            <summary>
+            mode indicating the constant current high if it is 1 it is CCLOW if it is 2 then it is CCHIGH. or whatever they were configured to be.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.MultiMeters.GenericGPIBMutliMeter.#ctor">
+             <summary>
+             Multimeter that measures current and voltage.
+             </summary>
+             <remarks>
+             <u>Instruction Set</u><br/>
+             Script Writer will specify commands for:
+            <ol>        
+             <li>Measuring Voltage</li>
+             <li>Measuring Current</li>
+             <li>Measuring Temperature</li>
+             </ol>
+             </remarks>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.MultiMeters.GenericGPIBMutliMeter.Measure_Voltage">
+            <summary>
+            assumes that there is only one multimeter. so don't care about the rail as it is extraneous information in this case.
+            </summary>
+            <param name="rail_num"></param>
+            <param name="instrumentation"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.MultiMeters.GenericGPIBMutliMeter.Measure_Voltage_V_Command">
+            <summary>
+            Command to measure voltage DC. You only need to enter this if Is_Measuring_Voltage is true. Set to N/A otherwise.
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.MultiMeters.GenericGPIBMutliMeter.Measure_Current_A_Command">
+            <summary>
+            Command to measure current DC. You only need to enter this if Is_Measuring_Current is true. Set to N/A otherwise.
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.MultiMeters.GenericGPIBMutliMeter.Measure_Temperature_C_Command">
+            <summary>
+            Command to measure temperature.  You only need to enter this if Is_Measuring_Temperature is true. Set to N/A otherwise.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.MultiMeters.HP34401A.#ctor">
+            <summary>
+            Multimeter that measures current and voltage.
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            Measuring:<br/>
+            MEAS:VOLT:DC? Voltage_Range_V, Voltage_Resolution_V<br/>
+            MEAS:CURR:DC? Current_Range_A, Current_Resolution_A<br/>
+            </remarks>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.MultiMeters.HP34401A.Measure_Voltage">
+            <summary>
+            assumes that there is only one multimeter. so don't care about the rail as it is extraneous information in this case.
+            </summary>
+            <param name="rail_num"></param>
+            <param name="instrumentation"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.MultiMeters.HP34401A.Voltage_Range_V">
+            <summary>
+            Ranges: 100mV, 1V, 10V, 100V, 1000V
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.MultiMeters.HP34401A.Voltage_Resolution_V">
+            <summary>
+            Maximum resolution: 100nV (on 100mV range)
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.MultiMeters.HP34401A.Current_Range_A">
+            <summary>
+            Ranges: 10mA(dc), 100mA(dc), 1A, 3A
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.MultiMeters.HP34401A.Current_Resolution_A">
+            <summary>
+            Maximum resolution: 10nA (on 10mA range)
+            </summary>
+        </member>
+        <member name="T:TIDP.Factory.Instrumentation.Oscilloscopes.TektronixDPO4104">
+            <summary>
+            On the scope I'd like to configure:
+            1. a channel
+            2. cursors
+            3. measurements
+            4. Triggers
+            5. Capture measurements and trace data.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.PowerSupplies.Agilent6032.#ctor">
+            <summary>
+            DC source that communicates with SCPI instructions.
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            Set Power:<br/> 
+            VOLT X<br/>
+            CURR X<br/>
+             <br/>
+            Measuring:<br/>
+            MEAS:VOLT?<br/>
+            MEAS:CURR?<br/><br/>  
+            
+            <u>OUTPUT commands:</u><br/>
+            OUTP:STAT? (return ON/OFF or 1/0)<br/>
+            OUTP:STAT ON<br/>
+            OUTP:STAT OFF
+            </remarks>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.PowerSupplies.Agilent6032ARPS.#ctor">
+            <summary>
+            DC source that communicates in ARPS as opposed to SCPI
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            Set Power:<br/>
+            ISET x<br/>
+            VSET x<br/>
+            <br/>
+            Measuring:<br/>
+            IOUT?<br/>
+            VOUT?<br/>
+            <br/>
+            <u>OUTPUT commands:</u><br/>
+            OUT? (returns ON/OFF or 1/0)<br/>
+            OUT 1<br/>
+            OUT 0
+            </remarks>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.PowerSupplies.Agilent6032ARPS.Power_Supply_Error_Check">
+            PRIVATES
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma6310X.#ctor">
+            <summary>
+            Single chroma load 6310
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            (not available)
+            </remarks>
+            <param name="channel">Set channel for load in a multi channel. If N/A then set to 1</param>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma6310X.Measure_Voltage">
+            <summary>
+            for all the output voltages i.e rail voltages we will be measuring them with the Chroma load that has 8 channel.  
+            Going in pairs of 2 since each module takes 2. rail 1= channel 1, rail 2= channel 3 rail 3= channel 5 rail 4 = channel 7
+            </summary>
+            <param name="rail_num"></param>
+            <param name="instrumentation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.Loads.Chroma6310X.Measure_Current">
+            <summary>
+            mode indicating the constant current high if it is 1 it is CCLOW if it is 2 then it is CCHIGH. or whatever they were configured to be.
+            </summary>
+        </member>
+        <member name="T:TIDP.Factory.Instrumentation.PowerSupplies.Chroma62012p">
+            <summary>
+            sets power and measure current and voltage.  Measuring is same as the agilent power supply.
+            </summary>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.PowerSupplies.Chroma62012p.#ctor">
+            <summary>
+            DC source that communicates with SCPI instructions.
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            Set Power: <br/>
+            SOUR:VOLT X<br/>
+            SOUR:CURR X<br/>
+             <br/>
+            <u>Measuring:</u><br/>
+            MEAS:VOLT?<br/>
+            MEAS:CURR?<br/><br/>       
+            
+            <u>OUTPUT commands:</u><br/>
+            CONF:OUTP? (returns ON/OFF)<br/>
+            CONF:OUTP ON<br/>
+            CONF:OUTP OFF<br/>
+            </remarks>
+            <remarks></remarks>
+        </member>
+        <member name="M:TIDP.Factory.Instrumentation.PowerSupplies.GenericGPIBDCSource.#ctor">
+            <summary>
+            Generic DC source that communicates with SCPI instructions over GPIB.  
+            User specifies the SCPI commands. Consider the defaults and look at other DCSources to get an idea of what commands you'll need from your instrument's manual.
+            </summary>
+            <remarks>
+            <u>Instruction Set</u><br/>
+            Script Writer will specify commands for:
+            <ol><li>Setting Voltage</li>
+            <li>Setting Current</li>
+            <li>Measuring Voltage</li>
+            <li>Measuring Current</li>
+            <li>Setting the output</li>
+            </ol>
+            </remarks>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.PowerSupplies.GenericGPIBDCSource.Set_Voltage_V_Command">
+            <summary>
+            What is the command to set voltage? Only enter the command, ignore the value.
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.PowerSupplies.GenericGPIBDCSource.Set_Current_A_Command">
+            <summary>
+            What is the command to set current? Only enter the command, ignore the value.
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.PowerSupplies.GenericGPIBDCSource.Measure_Voltage_V_Command">
+            <summary>
+            What is the command to measure voltage?
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.PowerSupplies.GenericGPIBDCSource.Measure_Current_A_Command">
+            <summary>
+            What is the command to measure current?
+            </summary>
+        </member>
+        <member name="P:TIDP.Factory.Instrumentation.PowerSupplies.GenericGPIBDCSource.Configure_Output_Command">
+            <summary>
+            tasks will automatically append "?, ON, OFF" depending on the situation.
+            Only enter the initial part.
+            </summary>
+        </member>
+    </members>
+</doc>

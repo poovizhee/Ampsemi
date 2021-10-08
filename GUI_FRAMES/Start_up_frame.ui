@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>start_up</class>
+ <widget class="QMainWindow" name="start_up">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1366</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Welcome to MTP programming</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_BG_img">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1366</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="focusPolicy">
+     <enum>Qt::StrongFocus</enum>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/BGstart1.png);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::WinPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>100</number>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="start_up_image.qrc">:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/BGstart1.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+    <property name="wordWrap">
+     <bool>false</bool>
+    </property>
+    <property name="indent">
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="device_combo_box">
+    <property name="geometry">
+     <rect>
+      <x>860</x>
+      <y>540</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>MS Shell Dlg 2</family>
+      <pointsize>15</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 15pt &quot;MS Shell Dlg 2&quot;;
+color: white;
+background-color: rgb(6, 63, 112);
+border-style:outset;
+border-width:2px;
+border-color:white;
+font:bold
+
+</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Select Device</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AMP4592</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AMP4291</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AMP4692</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>AMP4792</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLabel" name="label_amp_text">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>10</y>
+      <width>851</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial</family>
+      <pointsize>50</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Advanced Monolithic Power 
+         Semiconductor</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_AMP_LOGO">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>30</y>
+      <width>181</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="start_up_image.qrc">:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/LOGO.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>240</y>
+      <width>721</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/chip_prog_logo.png);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_proceed">
+    <property name="geometry">
+     <rect>
+      <x>1050</x>
+      <y>550</y>
+      <width>50</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">
+
+QPushButton {
+
+border-radius:5px;
+color: rgb(255, 255, 255);
+border-style:outset;
+border-width:2px;
+border-color:black;
+
+border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/proceed.png);
+}
+QPushButton::hover {
+background-color:lightgreen;
+}</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_ver">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>700</y>
+      <width>100</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>Version: 0.86</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <zorder>label_BG_img</zorder>
+   <zorder>label_amp_text</zorder>
+   <zorder>label_AMP_LOGO</zorder>
+   <zorder>label</zorder>
+   <zorder>device_combo_box</zorder>
+   <zorder>pushButton_proceed</zorder>
+   <zorder>label_ver</zorder>
+  </widget>
+ </widget>
+ <resources>
+  <include location="start_up_image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

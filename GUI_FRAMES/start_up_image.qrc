@@ -1,0 +1,37 @@
+<RCC>
+  <qresource prefix="C:/Users/MukeshChaudhary/PycharmProjects/pythonProject">
+    <file>../GUI_IMAGE/chip_prog_logo.png</file>
+    <file>../GUI_IMAGE/chip_prog_logo.png</file>
+    <file>../GUI_IMAGE/proceed.png</file>
+    <file>../GUI_IMAGE/decrement.png</file>
+    <file>../GUI_IMAGE/increment.png</file>
+    <file>../GUI_IMAGE/Unassigned_phase_not_available.png</file>
+    <file>../GUI_IMAGE/Unassigned_phase_not_available.png</file>
+    <file>../GUI_IMAGE/Assigned_phase.png</file>
+    <file>../GUI_IMAGE/Unassigned_phase.png</file>
+    <file>../GUI_IMAGE/Unassigned_phase_blank.png</file>
+    <file>../GUI_IMAGE/Unassigned_phase_NA.png</file>
+    <file>../GUI_IMAGE/Telemetry_icon_hover.png</file>
+    <file>../GUI_IMAGE/Home_icon_hover.png</file>
+    <file>../GUI_IMAGE/custom_icon.png</file>
+    <file>../GUI_IMAGE/Device_configuration_icon.png</file>
+    <file>../GUI_IMAGE/Telemetry_icon.png</file>
+    <file>../GUI_IMAGE/faults_edit.png</file>
+    <file>../GUI_IMAGE/power_green_icon.png</file>
+    <file>../GUI_IMAGE/power_grey_icon.png</file>
+    <file>../GUI_IMAGE/Help Icon.png</file>
+    <file>../GUI_IMAGE/Status_off_button.png</file>
+    <file>../GUI_IMAGE/Status_on_button.png</file>
+    <file>../GUI_IMAGE/but0.png</file>
+    <file>../GUI_IMAGE/but1.png</file>
+    <file>../GUI_IMAGE/Home_icon.png</file>
+    <file>../GUI_IMAGE/BGstart1.png</file>
+    <file>../GUI_IMAGE/but0_hover.png</file>
+    <file>../GUI_IMAGE/but1_hover.png</file>
+    <file>../GUI_IMAGE/custom_icon_hover.png</file>
+    <file>../GUI_IMAGE/Device_configuration_icon_hover.png</file>
+    <file>../GUI_IMAGE/faults_edit_hover.png</file>
+    <file>../GUI_IMAGE/Home_icon_hover.png</file>
+    <file>../GUI_IMAGE/LOGO.png</file>
+  </qresource>
+</RCC>
