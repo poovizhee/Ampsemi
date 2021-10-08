@@ -965,17 +965,12 @@ border-radius:0px;
      </property>
      <item>
       <property name="text">
-       <string>0.07mV/μs</string>
+       <string>0.12mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>0.29mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>0.58mV/μs</string>
+       <string>0.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -985,12 +980,7 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>2mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>4mV/μs</string>
+       <string>2.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -1000,12 +990,7 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>7mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>8mV/μs</string>
+       <string>7.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -1015,32 +1000,17 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>11mV/μs</string>
+       <string>12.5mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>13mV/μs</string>
+       <string>15mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>14mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>16mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>17mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>19mV/μs</string>
+       <string>17.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -1050,17 +1020,27 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>21mV/μs</string>
+       <string>22.5mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>23mV/μs</string>
+       <string>25mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>28mV/μs</string>
+       <string>27.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>30mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>32.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -1070,17 +1050,37 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>46mV/μs</string>
+       <string>37.5mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>58mV/μs</string>
+       <string>40mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>75mV/μs</string>
+       <string>48mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>60mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>80mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>96mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>125mV/μs</string>
       </property>
      </item>
     </widget>
@@ -1537,12 +1537,12 @@ color: rgb(0, 0, 0);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main Files/GUI_IMAGE/but0.png);
 }
 
 
 QPushButton::hover {
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main Files/GUI_IMAGE/but0_hover.png);
 	}
 </string>
      </property>
@@ -1820,12 +1820,12 @@ border:2px solid red;
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main Files/GUI_IMAGE/but0.png);
 }
 
 
 QPushButton::hover {
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main Files/GUI_IMAGE/but0_hover.png);
 	}
 </string>
       </property>
@@ -3744,17 +3744,12 @@ border-radius:0px;
      </property>
      <item>
       <property name="text">
-       <string>0.07mV/μs</string>
+       <string>0.12mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>0.29mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>0.58mV/μs</string>
+       <string>0.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -3764,12 +3759,7 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>2mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>4mV/μs</string>
+       <string>2.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -3779,12 +3769,7 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>7mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>8mV/μs</string>
+       <string>7.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -3794,32 +3779,17 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>11mV/μs</string>
+       <string>12.5mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>13mV/μs</string>
+       <string>15mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>14mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>16mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>17mV/μs</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>19mV/μs</string>
+       <string>17.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -3829,17 +3799,27 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>21mV/μs</string>
+       <string>22.5mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>23mV/μs</string>
+       <string>25mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>28mV/μs</string>
+       <string>27.5mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>30mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>32.5mV/μs</string>
       </property>
      </item>
      <item>
@@ -3849,17 +3829,37 @@ border-radius:0px;
      </item>
      <item>
       <property name="text">
-       <string>46mV/μs</string>
+       <string>37.5mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>58mV/μs</string>
+       <string>40mV/μs</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>75mV/μs</string>
+       <string>48mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>60mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>80mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>96mV/μs</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>125mV/μs</string>
       </property>
      </item>
     </widget>
