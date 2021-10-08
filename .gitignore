@@ -1,0 +1,27 @@
+# Python
+*.py[cod]
+*.egg-info/
+# Virtual Environment
+/.venv/
+/pyvenv.cfg
+# pip
+/pip-selfcheck.json
+# Versioneer
+# - Vendored code, can be considered "library code"
+/versioneer.py
+/chipconfig/VERSION.py
+# PyInstaller
+/build
+/dist
+/*.spec
+# Spyder
+/.spyproject/config/backups/
+/.spyproject/config/*.ini
+# Visual Studio Code
+/.vscode/
+
+# Ignore thumbnails created by Windows
+Thumbs.db
+
+# Ignore test results
+/tests/results/
