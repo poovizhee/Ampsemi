@@ -4727,7 +4727,7 @@ class MTP_register_database(QThread):
 
         global register_database, parallel_thread, PMBUS_ADDR, initial_device_status,stop_thread
 
-        return # temperory thing
+        # return # temperory thing
         if initial_device_status == 1:
             return
         testmode_entry()                # To read E4 register testmode entry is required
@@ -8477,7 +8477,7 @@ class frame_svid(QMainWindow, Ui_SVID_Configuration):
     def svid_save_register(self):
         global list_of_registers_used_in_this_frame, resolutionA, resolutionB, initial_device_status, homeWin_obj, \
             parallel_thread, stop_thread
-        initial_device_status = 0
+        # initial_device_status = 0
         if initial_device_status == 0:
             if homeWin_obj.pushButton_Enable_VR.isChecked():
                 stop_thread = True
@@ -13459,7 +13459,7 @@ class HomeWindow(QMainWindow, Ui_Home):
         initial_device_status = TI_dongle_not_present or (device_status == "OFF")
 
         # overriding to 0 to get access to save the commands in Command.xlsx
-        initial_device_status = 0
+        # initial_device_status = 0
         if initial_device_status == 1:
             # print_log("Check the PMBus address and V3p3 supply connection", "ERROR")
             pass
@@ -14202,7 +14202,7 @@ if __name__ == '__main__':
     parallel_thread = MyThread()
     myWin.show()
     SVID_custom_obj = SVID_custom_commands()
-    create_new_command_xlsx()  # it will create a fresh command.xlsx
+    # create_new_command_xlsx()  # it will create a fresh command.xlsx
     PMBus_custom_obj = PMBus_custom_commands()
 
     sys.exit(app.exec_())
