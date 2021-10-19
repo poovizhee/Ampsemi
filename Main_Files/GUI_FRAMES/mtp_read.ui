@@ -144,13 +144,13 @@ border-radius: 10px;
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/mtp_read2.png);</string>
+        <string notr="true">image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/mtp_read2.png);</string>
        </property>
        <property name="text">
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../GUI_IMAGE/resource.qrc">:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/mtp_read2.png</pixmap>
+        <pixmap resource="../GUI_IMAGE/resource.qrc">:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/mtp_read2.png</pixmap>
        </property>
        <property name="scaledContents">
         <bool>true</bool>

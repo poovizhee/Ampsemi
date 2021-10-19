@@ -1137,12 +1137,12 @@ border:2px solid red;
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0.png);
 }
 
 
 QPushButton::hover {
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0_hover.png);
 	}
 </string>
       </property>

@@ -76,12 +76,12 @@ border-radius:5px;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0.png);
 }
 
 
 QPushButton::hover {
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0_hover.png);
 	}
 </string>
      </property>
@@ -856,7 +856,7 @@ color: rgb(0, 0, 0);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/horizontal_arrowA.png);</string>
+      <string notr="true">image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/horizontal_arrowA.png);</string>
      </property>
      <property name="text">
       <string/>
@@ -1525,12 +1525,12 @@ color: rgb(0, 0, 0);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0.png);
 }
 
 
 QPushButton::hover {
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0_hover.png);
 	}
 </string>
      </property>
@@ -1631,7 +1631,7 @@ border-radius:0px;
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/horizontal_arrowB.png);</string>
+      <string notr="true">image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/horizontal_arrowB.png);</string>
      </property>
      <property name="text">
       <string/>

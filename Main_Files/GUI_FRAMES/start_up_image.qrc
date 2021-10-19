@@ -1,5 +1,5 @@
 <RCC>
-  <qresource prefix="C:/Users/MukeshChaudhary/PycharmProjects/pythonProject">
+  <qresource prefix="D:/Au4592/Ampsemi/Main_Files">
     <file>../GUI_IMAGE/chip_prog_logo.png</file>
     <file>../GUI_IMAGE/chip_prog_logo.png</file>
     <file>../GUI_IMAGE/proceed.png</file>
@@ -19,7 +19,7 @@
     <file>../GUI_IMAGE/faults_edit.png</file>
     <file>../GUI_IMAGE/power_green_icon.png</file>
     <file>../GUI_IMAGE/power_grey_icon.png</file>
-    <file>../GUI_IMAGE/Help Icon.png</file>
+    <file>../GUI_IMAGE/Help_Icon.png</file>
     <file>../GUI_IMAGE/Status_off_button.png</file>
     <file>../GUI_IMAGE/Status_on_button.png</file>
     <file>../GUI_IMAGE/but0.png</file>

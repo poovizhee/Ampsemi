@@ -70,10 +70,10 @@ border-radius:50px;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Home_icon.png);
+image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Home_icon.png);
 }
 QPushButton::hover {
-	image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Home_icon_hover.png);
+	image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Home_icon_hover.png);
 	}
 </string>
       </property>
@@ -101,14 +101,14 @@ QPushButton::hover {
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Device_configuration_icon.png);
+image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Device_configuration_icon.png);
 color: rgb(255, 255, 255);
 border-radius:15px;
 font: 87 10pt &quot;Arial Black&quot;;
 }
 
 QPushButton::hover {
-	image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Device_configuration_icon_hover.png);
+	image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Device_configuration_icon_hover.png);
 	
 	}
 
@@ -211,7 +211,7 @@ border-radius:3px;
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/power_grey_icon.png);</string>
+          <string notr="true">image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/power_grey_icon.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -881,7 +881,7 @@ background-color: rgb(54, 41, 200);</string>
           </rect>
          </property>
          <property name="styleSheet">
-          <string notr="true">image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/power_green_icon.png);
+          <string notr="true">image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/power_green_icon.png);
 </string>
          </property>
          <property name="text">
@@ -1242,12 +1242,12 @@ background-color:lightgreen;
         </property>
         <property name="styleSheet">
          <string notr="true">QPushButton{
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0.png);
 }
 
 
 QPushButton::hover {
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0_hover.png);
 	}
 </string>
         </property>
@@ -3351,14 +3351,14 @@ border-radius:2px;</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Telemetry_icon.png);
+image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Telemetry_icon.png);
 color: rgb(255, 255, 255);
 border-radius:15px;
 font: 87 10pt &quot;Arial Black&quot;;
 }
 QPushButton::hover {
 	
-	image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Telemetry_icon_hover.png);
+	image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Telemetry_icon_hover.png);
 	}
 </string>
       </property>
@@ -3381,14 +3381,14 @@ Telemetry</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton {
-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/faults_edit.png);
+image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/faults_edit.png);
 color: rgb(255, 255, 255);
 border-radius:15px;
 font: 87 10pt &quot;Arial Black&quot;;
 }
 QPushButton::hover {
 	
-	image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/faults_edit_hover.png);
+	image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/faults_edit_hover.png);
 	}
 </string>
       </property>
@@ -3420,12 +3420,12 @@ Faults</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/custom_icon.png);
+image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/custom_icon.png);
 color: rgb(255, 255, 255);
 border-radius:15px;
 }
 QPushButton::hover {
-	image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/custom_icon_hover.png);
+	image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/custom_icon_hover.png);
 	
 	}
 
@@ -3481,12 +3481,12 @@ Custom</string>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0.png);
 }
 
 
 QPushButton::hover {
-border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/but0_hover.png);
+border-image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/but0_hover.png);
 	}
 </string>
       </property>
@@ -3516,7 +3516,7 @@ border-image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_I
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="start_up_image.qrc">:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Status_off_button.png</pixmap>
+       <pixmap resource="start_up_image.qrc">:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Status_off_button.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -3589,7 +3589,7 @@ background-color:lightgreen;
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">image: url(:/C:/Users/MukeshChaudhary/PycharmProjects/pythonProject/GUI_IMAGE/Help Icon.png);</string>
+       <string notr="true">image: url(:/D:/Au4592/Ampsemi/Main_Files/GUI_IMAGE/Help Icon.png);</string>
       </property>
       <property name="text">
        <string/>
